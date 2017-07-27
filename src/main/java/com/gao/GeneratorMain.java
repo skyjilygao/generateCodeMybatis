@@ -19,7 +19,6 @@ public class GeneratorMain {
         String classPathEntry=GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
         //读取配置文件
         File configFile = new File(filename);
-//        File configFile = new File("generatorConfig.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config;
         try {  
@@ -32,8 +31,7 @@ public class GeneratorMain {
                 myBatisGenerator = new MyBatisGenerator(config, callback,
                         warnings);
                 myBatisGenerator.generate(null);  
-                  System.out.println("1_1111111");
-                //打印结果  
+                //打印结果
                 for(String str : warnings){  
                     System.out.println(str);  
                 }  
