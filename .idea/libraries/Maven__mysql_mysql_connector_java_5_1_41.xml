@@ -2,6 +2,7 @@
   <library name="Maven: mysql:mysql-connector-java:5.1.41">
     <CLASSES>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -10,6 +11,8 @@
     <SOURCES>
       <root url="jar://$USER_HOME$/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41-sources.jar!/" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -17,6 +20,9 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41-sources.jar!/" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     </SOURCES>
   </library>

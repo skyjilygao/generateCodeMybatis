@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="b35c349b-0395-421e-b375-cc132897106d" name="Default" comment="" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <list default="true" id="b35c349b-0395-421e-b375-cc132897106d" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java" afterPath="$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java" />
     </list>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,6 +29,10 @@
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
@@ -32,8 +42,13 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="242">
               <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+=======
+            <state relative-caret-position="165">
+              <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
             <state relative-caret-position="165">
               <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
@@ -47,8 +62,13 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="286">
               <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+=======
+            <state relative-caret-position="45">
+              <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
             <state relative-caret-position="45">
               <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
@@ -59,17 +79,23 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file leaf-file-name="GeneratorMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
               <caret line="17" column="80" lean-forward="false" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       <file leaf-file-name="GeneratorMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="351">
               <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
               <folding>
                 <element signature="imports" expanded="true" />
@@ -79,12 +105,15 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file leaf-file-name="generatorConfig.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="70">
               <caret line="51" column="27" lean-forward="false" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       <file leaf-file-name="generatorConfig.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -130,6 +159,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
               <caret line="937" column="0" lean-forward="false" selection-start-line="937" selection-start-column="0" selection-end-line="937" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
               <folding />
             </state>
@@ -146,12 +178,15 @@
     </option>
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="FindInProjectRecents">
     <findStrings>
       <find>fahai</find>
       <find>com.adorado</find>
     </findStrings>
   </component>
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
   <component name="Git.Settings">
@@ -166,15 +201,21 @@
     <option name="CHANGED_PATHS">
       <list>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java" />
         <option value="$PROJECT_DIR$/src/main/resources/generator.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
         <option value="$PROJECT_DIR$/src/main/resources/generator.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       </list>
     </option>
@@ -208,15 +249,21 @@
   </component>
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="-129" />
     <option name="y" value="62" />
     <option name="width" value="1460" />
     <option name="height" value="858" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <option name="x" value="215" />
     <option name="y" value="65" />
     <option name="width" value="1510" />
     <option name="height" value="934" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -237,6 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <pane id="ProjectPane">
         <subPane>
@@ -304,6 +352,8 @@
       <pane id="Scratches" />
       <pane id="AndroidView" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="Scope" />
@@ -475,6 +525,9 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     </panes>
   </component>
@@ -490,7 +543,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <recent name="E:\ideaWorkSpace\generateCodeMybatis\src\main\resources\lib" />
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -511,7 +567,11 @@
   </component>
   <component name="RunManager" selected="Application.GeneratorMain">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration name="GeneratorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+=======
+    <configuration default="false" name="GeneratorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
     <configuration default="false" name="GeneratorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
@@ -532,6 +592,7 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="generateCodeMybatis" />
       <envs />
+<<<<<<< HEAD
 <<<<<<< HEAD
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -640,12 +701,16 @@
 =======
       <method />
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
+      <method />
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+<<<<<<< HEAD
 <<<<<<< HEAD
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -681,6 +746,9 @@
       <envs />
       <properties />
       <listeners />
+=======
+      <method />
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
       <method />
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
@@ -741,7 +809,10 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -765,6 +836,9 @@
       <envs />
       <method />
     </configuration>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -848,7 +922,10 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
       <option name="BCName" value="" />
       <option name="IOSSimulatorSdkPath" value="" />
@@ -898,6 +975,9 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
@@ -916,7 +996,10 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
@@ -946,6 +1029,9 @@
       <patterns />
       <method />
     </configuration>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1010,7 +1096,10 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1019,6 +1108,9 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1027,7 +1119,10 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1059,6 +1154,9 @@
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
@@ -1074,6 +1172,12 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.GeneratorMain" />
+    </list>
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Application.GeneratorMain" />
@@ -1098,16 +1202,20 @@
       <workItem from="1501122336089" duration="35000" />
       <workItem from="1501122425836" duration="12072000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1508292412341" duration="1484000" />
       <workItem from="1508490641858" duration="1698000" />
       <workItem from="1508721019854" duration="820000" />
       <workItem from="1508730121110" duration="1544000" />
 =======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="17653000" />
   </component>
@@ -1130,6 +1238,8 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34357142" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <option name="totallyTimeSpent" value="12107000" />
   </component>
   <component name="ToolWindowManager">
@@ -1142,11 +1252,15 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1166,6 +1280,8 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39904988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1191,6 +1307,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -1210,8 +1329,13 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="242">
           <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1221,20 +1345,27 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.0/mybatis-generator-core-1.3.0.jar!/org/mybatis/generator/internal/util/ClassloaderUtility.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1259,6 +1390,8 @@
         <state relative-caret-position="242">
           <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.0/mybatis-generator-core-1.3.0.jar!/org/mybatis/generator/plugins/RenameExampleClassPlugin.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1282,26 +1415,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.0/mybatis-generator-core-1.3.0.jar!/org/mybatis/generator/plugins/SqlMapConfigPlugin.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1318,6 +1461,8 @@
         <state relative-caret-position="1452">
           <caret line="66" column="48" lean-forward="false" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.0/mybatis-generator-core-1.3.0.jar!/org/mybatis/generator/api/dom/java/FullyQualifiedJavaType.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
@@ -1330,21 +1475,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="293" column="13" lean-forward="false" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="file://$PROJECT_DIR$/generateCodeMybatis.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
@@ -1353,8 +1507,13 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="264">
           <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+=======
+        <state relative-caret-position="45">
+          <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
         <state relative-caret-position="45">
           <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
@@ -1364,6 +1523,7 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -1371,6 +1531,8 @@
           <folding>
             <element signature="imports" expanded="true" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/regex/Pattern.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3454">
@@ -1378,71 +1540,99 @@
           <folding>
             <element signature="e#48487#48488#0" expanded="false" />
             <element signature="e#48531#48532#0" expanded="false" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           </folding>
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1474">
           <caret line="67" column="69" lean-forward="false" selection-start-line="67" selection-start-column="69" selection-end-line="67" selection-end-column="69" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="file://$PROJECT_DIR$/tempCode/tmp/com/fahai/web/dao/caseInvestigationMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.1/mybatis-generator-core-1.3.1.jar!/org/mybatis/generator/config/Context.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="363" column="0" lean-forward="false" selection-start-line="363" selection-start-column="0" selection-end-line="363" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.1/mybatis-generator-core-1.3.1.jar!/org/mybatis/generator/api/IntrospectedTable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="342" column="0" lean-forward="false" selection-start-line="342" selection-start-column="0" selection-end-line="342" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.1/mybatis-generator-core-1.3.1.jar!/org/mybatis/generator/internal/PluginAggregator.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="937" column="0" lean-forward="false" selection-start-line="937" selection-start-column="0" selection-end-line="937" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1459,6 +1649,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1471,11 +1663,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
           <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.0/mybatis-generator-core-1.3.0.jar!/org/mybatis/generator/internal/util/ClassloaderUtility.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.0/mybatis-generator-core-1.3.0.jar!/org/mybatis/generator/plugins/RenameExampleClassPlugin.class" />
@@ -1505,6 +1701,8 @@
         <state relative-caret-position="242">
           <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1517,11 +1715,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1530,6 +1732,8 @@
           <folding>
             <element signature="imports" expanded="true" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="file://$PROJECT_DIR$/tempCode/tmp/com/fahai/web/entity/caseInvestigation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -1537,26 +1741,36 @@
           <folding>
             <element signature="e#769#770#0" expanded="false" />
             <element signature="e#833#834#0" expanded="false" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           </folding>
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/generator/mybatis-generator-core/1.3.1/mybatis-generator-core-1.3.1.jar!/org/mybatis/generator/plugins/RenameExampleClassPlugin.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="28" column="62" lean-forward="true" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="62" />
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1564,6 +1778,8 @@
           <caret line="51" column="27" lean-forward="false" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
           <folding />
 =======
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
@@ -1571,6 +1787,9 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+<<<<<<< HEAD
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
+=======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
         </state>
       </provider>

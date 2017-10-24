@@ -8,9 +8,13 @@
     <artifactId>generateCodeMybatis</artifactId>
     <version>1.0-SNAPSHOT</version>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <properties>
         <postgresql.version>9.4.1209</postgresql.version>
     </properties>
+=======
+
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
 
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
@@ -27,12 +31,15 @@
             <version>5.1.41</version>
         </dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <!-- postgresql驱动包 -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+=======
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
     </dependencies>

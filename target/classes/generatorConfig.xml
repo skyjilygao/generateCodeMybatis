@@ -42,8 +42,13 @@
           
         <!-- 生成实体类地址 -->    
 <<<<<<< HEAD
+<<<<<<< HEAD
         <javaModelGenerator targetPackage="com.adorado.fbads.entity"
             targetProject="${project}" >
+=======
+        <javaModelGenerator targetPackage="com.fahai.web.entity"  
+            targetProject="${project}" >  
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
         <javaModelGenerator targetPackage="com.fahai.web.entity"  
             targetProject="${project}" >  
@@ -55,10 +60,16 @@
         </javaModelGenerator>  
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <!-- 生成mapxml文件 -->
          <sqlMapGenerator targetPackage="mapper"
                          targetProject="${resource}" >
         <!--  <sqlMapGenerator targetPackage="com.adorado.fbads.dao.mapper" targetProject="${project}" > -->
+=======
+        <!-- 生成mapxml文件 -->  
+        <sqlMapGenerator targetPackage="mybatis"  
+            targetProject="${resource}" >  
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
         <!-- 生成mapxml文件 -->  
         <sqlMapGenerator targetPackage="mybatis"  
@@ -70,7 +81,11 @@
           
         <!-- 生成mapxml对应client，也就是接口dao -->      
 <<<<<<< HEAD
+<<<<<<< HEAD
         <javaClientGenerator targetPackage="com.adorado.fbads.dao"
+=======
+        <javaClientGenerator targetPackage="com.fahai.web.dao"  
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
         <javaClientGenerator targetPackage="com.fahai.web.dao"  
 >>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
@@ -81,8 +96,13 @@
 
         <!-- 配置表信息，这里没生成一张表，这里需要改变一次对应表名 -->    
 <<<<<<< HEAD
+<<<<<<< HEAD
         <table schema="fb_ads" tableName="fb_ads_ad_setting"
             domainObjectName="FbAdsAdSetting" enableCountByExample="false"
+=======
+        <table schema="newfahai" tableName="case_invstg"  
+            domainObjectName="caseInvestigation" enableCountByExample="false"
+>>>>>>> cb8f27afeb1f36223024c79e216a617febcd74c1
 =======
         <table schema="newfahai" tableName="case_invstg"  
             domainObjectName="caseInvestigation" enableCountByExample="false"
