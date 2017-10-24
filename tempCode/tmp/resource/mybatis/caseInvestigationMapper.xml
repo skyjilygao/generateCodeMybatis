@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fahai.web.dao.caseInvestigationMapper" >
+  <resultMap id="BaseResultMap" type="com.fahai.web.entity.caseInvestigation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="uphone" property="uphone" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="casetype" property="casetype" jdbcType="VARCHAR" />
+    <result column="accept_lawyername" property="acceptLawyername" jdbcType="VARCHAR" />
+    <result column="accept_lawyerid" property="acceptLawyerid" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bak" property="bak" jdbcType="VARCHAR" />
+    <result column="bak2" property="bak2" jdbcType="VARCHAR" />
+    <result column="bak3" property="bak3" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fahai.web.entity.caseInvestigation" extends="BaseResultMap" >
+    <result column="casedesc" property="casedesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uname, userid, uphone, area, casetype, accept_lawyername, accept_lawyerid, create_time, 
+    update_time, state, remark, bak, bak2, bak3
+  </sql>
+  <sql id="Blob_Column_List" >
+    casedesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from case_invstg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from case_invstg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fahai.web.entity.caseInvestigation" >
+    insert into case_invstg (id, uname, userid, 
+      uphone, area, casetype, 
+      accept_lawyername, accept_lawyerid, create_time, 
+      update_time, state, remark, 
+      bak, bak2, bak3, casedesc
+      )
+    values (#{id,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+      #{uphone,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{casetype,jdbcType=VARCHAR}, 
+      #{acceptLawyername,jdbcType=VARCHAR}, #{acceptLawyerid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{bak,jdbcType=VARCHAR}, #{bak2,jdbcType=VARCHAR}, #{bak3,jdbcType=VARCHAR}, #{casedesc,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fahai.web.entity.caseInvestigation" >
+    insert into case_invstg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="uphone != null" >
+        uphone,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="casetype != null" >
+        casetype,
+      </if>
+      <if test="acceptLawyername != null" >
+        accept_lawyername,
+      </if>
+      <if test="acceptLawyerid != null" >
+        accept_lawyerid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bak != null" >
+        bak,
+      </if>
+      <if test="bak2 != null" >
+        bak2,
+      </if>
+      <if test="bak3 != null" >
+        bak3,
+      </if>
+      <if test="casedesc != null" >
+        casedesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="uphone != null" >
+        #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="casetype != null" >
+        #{casetype,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptLawyername != null" >
+        #{acceptLawyername,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptLawyerid != null" >
+        #{acceptLawyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bak != null" >
+        #{bak,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        #{bak3,jdbcType=VARCHAR},
+      </if>
+      <if test="casedesc != null" >
+        #{casedesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fahai.web.entity.caseInvestigation" >
+    update case_invstg
+    <set >
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="uphone != null" >
+        uphone = #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="casetype != null" >
+        casetype = #{casetype,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptLawyername != null" >
+        accept_lawyername = #{acceptLawyername,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptLawyerid != null" >
+        accept_lawyerid = #{acceptLawyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bak != null" >
+        bak = #{bak,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        bak2 = #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        bak3 = #{bak3,jdbcType=VARCHAR},
+      </if>
+      <if test="casedesc != null" >
+        casedesc = #{casedesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fahai.web.entity.caseInvestigation" >
+    update case_invstg
+    set uname = #{uname,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      uphone = #{uphone,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      casetype = #{casetype,jdbcType=VARCHAR},
+      accept_lawyername = #{acceptLawyername,jdbcType=VARCHAR},
+      accept_lawyerid = #{acceptLawyerid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      bak = #{bak,jdbcType=VARCHAR},
+      bak2 = #{bak2,jdbcType=VARCHAR},
+      bak3 = #{bak3,jdbcType=VARCHAR},
+      casedesc = #{casedesc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fahai.web.entity.caseInvestigation" >
+    update case_invstg
+    set uname = #{uname,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      uphone = #{uphone,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      casetype = #{casetype,jdbcType=VARCHAR},
+      accept_lawyername = #{acceptLawyername,jdbcType=VARCHAR},
+      accept_lawyerid = #{acceptLawyerid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      bak = #{bak,jdbcType=VARCHAR},
+      bak2 = #{bak2,jdbcType=VARCHAR},
+      bak3 = #{bak3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
