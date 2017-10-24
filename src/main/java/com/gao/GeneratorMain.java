@@ -16,7 +16,9 @@ public class GeneratorMain {
         List<String> warnings = new ArrayList<String>();  
         boolean overwrite = true;
         String filename=GeneratorMain.class.getClassLoader().getResource("generatorConfig.xml").getFile();
-//        String classPathEntry=GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
+        // msyql
+        String classPathEntry3=GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
+        // postgresql
         String classPathEntry=GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
 
         //读取配置文件

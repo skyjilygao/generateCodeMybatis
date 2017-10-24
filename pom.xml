@@ -7,6 +7,9 @@
     <groupId>generateCodeMybatis</groupId>
     <artifactId>generateCodeMybatis</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <postgresql.version>9.4.1209</postgresql.version>
+    </properties>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
@@ -19,6 +22,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.41</version>
+        </dependency>
+        <!-- postgresql驱动包 -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
     <build>
