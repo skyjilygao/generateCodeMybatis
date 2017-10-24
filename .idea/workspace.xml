@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b35c349b-0395-421e-b375-cc132897106d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gao/GeneratorMain.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_41.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_41.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_core_1_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_core_1_3_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generateCodeMybatis.iml" afterPath="$PROJECT_DIR$/generateCodeMybatis.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java" afterPath="$PROJECT_DIR$/src/main/java/com/gao/GeneratorMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/generator.properties" afterPath="$PROJECT_DIR$/src/main/resources/generator.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/generator.properties" afterPath="$PROJECT_DIR$/target/classes/generator.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tempCode/tmp/com/fahai/web/dao/caseInvestigationMapper.java" afterPath="$PROJECT_DIR$/tempCode/tmp/com/fahai/web/dao/caseInvestigationMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tempCode/tmp/com/fahai/web/entity/caseInvestigation.java" afterPath="$PROJECT_DIR$/tempCode/tmp/com/fahai/web/entity/caseInvestigation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tempCode/tmp/resource/mybatis/caseInvestigationMapper.xml" afterPath="$PROJECT_DIR$/tempCode/tmp/resource/mybatis/caseInvestigationMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -137,8 +124,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-23" />
-    <option name="y" value="4" />
+    <option name="x" value="-26" />
     <option name="width" value="1460" />
     <option name="height" value="867" />
   </component>
@@ -645,15 +631,23 @@
       <updated>1501122334779</updated>
       <workItem from="1501122336089" duration="35000" />
       <workItem from="1501122425836" duration="12072000" />
-      <workItem from="1508812848281" duration="45000" />
+      <workItem from="1508812848281" duration="92000" />
     </task>
+    <task id="LOCAL-00001" summary="pssql">
+      <created>1508812932571</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1508812932571</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12152000" />
+    <option name="totallyTimeSpent" value="12199000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-23" y="4" width="1460" height="867" extended-state="0" />
+    <frame x="-26" y="0" width="1460" height="867" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -695,6 +689,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="pssql" />
+    <option name="LAST_COMMIT_MESSAGE" value="pssql" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -773,6 +771,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -789,6 +788,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -823,6 +823,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="e#769#770#0" expanded="false" />
+            <element signature="e#833#834#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
