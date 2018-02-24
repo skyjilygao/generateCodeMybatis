@@ -19,7 +19,7 @@ public class GeneratorMain {
         // msyql
         String classPathEntry3=GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
         // postgresql
-        String classPathEntry=GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
+        String classPathEntry=GeneratorMain.class.getClassLoader().getResource("lib/postgresql-9.4.1209.jar").getFile();
 
         //读取配置文件
         File configFile = new File(filename);

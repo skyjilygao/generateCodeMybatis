@@ -41,7 +41,7 @@
         </javaTypeResolver>  
           
         <!-- 生成实体类地址 -->    
-        <javaModelGenerator targetPackage="com.adorado.fbads.entity"
+        <javaModelGenerator targetPackage="${package}.entity"
             targetProject="${project}" >
         <!--<javaModelGenerator targetPackage="com.fahai.web.entity"
             targetProject="${project}" >-->
@@ -52,22 +52,22 @@
         </javaModelGenerator>  
 
         <!-- 生成mapxml文件 -->  
-        <sqlMapGenerator targetPackage="mybatis"  
+        <sqlMapGenerator targetPackage="mapper"
             targetProject="${resource}" >  
             <!-- 是否在当前路径下新加一层schema,eg：fase路径cn.ffcs.test.domain"， true:cn.ffcs.test.domain".[schemaName] -->  
             <property name="enableSubPackages" value="false" />  
         </sqlMapGenerator>  
           
         <!-- 生成mapxml对应client，也就是接口dao -->      
-        <javaClientGenerator targetPackage="com.adorado.fbads.dao"
+        <javaClientGenerator targetPackage="${package}.dao"
             targetProject="${project}" type="XMLMAPPER" >  
             <!-- 是否在当前路径下新加一层schema,eg：fase路径cn.ffcs.test.domain"， true:cn.ffcs.test.domain".[schemaName] -->  
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
-        <!-- 配置表信息，这里没生成一张表，这里需要改变一次对应表名 -->    
-        <table schema="fb_ads" tableName="fb_ads_ad_setting"
-            domainObjectName="FbAdsAdSetting" enableCountByExample="false"
+        <!-- 配置表信息，这里没生成一张表，这里需要改变一次对应表名 -->
+        <table schema="${schema}" tableName="${tableName}"
+            domainObjectName="${domainObjectName}" enableCountByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false"
             enableUpdateByExample="false">  
             <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample   
