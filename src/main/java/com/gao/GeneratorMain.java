@@ -76,6 +76,7 @@ public class GeneratorMain {
             } catch (XMLParserException e) {
                 e.printStackTrace();
             }
+            System.out.println("generator ok");
         } catch (IOException e) {
             e.printStackTrace();
         }
