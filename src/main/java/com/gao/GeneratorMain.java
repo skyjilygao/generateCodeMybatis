@@ -19,32 +19,27 @@ import java.util.Properties;
  * @author skyjilygao
  */
 public class GeneratorMain {
+    private static Boolean generateNewCode = false;
     public static void main(String[] args) {
         Properties props = new Properties();
         InputStream in;
         try {
             in = GeneratorMain.class.getClassLoader().getResourceAsStream("generator.properties");
             props.load(in);
-            Boolean gnc = Boolean.parseBoolean(props.getProperty("generateNewCode"));
-            File projectDir = new File(props.getProperty("project"));
-            File resourceDir = new File(props.getProperty("resource"));
+            generateNewCode = Boolean.parseBoolean(props.getProperty("generateNewCode"));
+            String javaPath =props.getProperty("project");
+            String resourcePath =props.getProperty("resource");
+            File projectDir = new File(javaPath);
+            File resourceDir = new File(resourcePath);
             if(!projectDir.exists()){
                 projectDir.mkdirs();
             }else {
-                if(gnc){
-                    System.out.println("del....");
-                    delFolder(props.getProperty("project"));
-                    projectDir.delete();
-                    projectDir.mkdirs();
-                }
+                generateNewCode(projectDir, javaPath);
             }
             if(!resourceDir.exists()){
                 resourceDir.mkdirs();
             }else {
-                if(gnc){
-                    resourceDir.delete();
-                    resourceDir.mkdirs();
-                }
+                generateNewCode(resourceDir, resourcePath);
             }
             List<String> warnings = new ArrayList<String>();
             boolean overwrite = true;
@@ -86,7 +81,19 @@ public class GeneratorMain {
         }
     }
 
-
+    /**
+     * 每次运行是否重新生成目录
+     * @param dir
+     * @param path
+     */
+    private static void generateNewCode(File dir, String path){
+        if(generateNewCode){
+            System.out.println("del...." + path);
+            delFolder(path);
+//            dir.delete();
+            dir.mkdirs();
+        }
+    }
     //删除文件夹
     public static void delFolder(String folderPath) {
         try {
