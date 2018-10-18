@@ -23,11 +23,14 @@
             <!--<property name="replaceString" value="Dao" />-->
         <!--</plugin>-->
 
-        <!-- 注释 -->
-        <commentGenerator >  
-            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->  
-            <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳-->  
-        </commentGenerator>  
+        <!-- 注释 自定义-->
+        <commentGenerator type="com.gao.MyCommentGenerator">
+        </commentGenerator>
+        <!-- 注释 默认-->
+        <!--<commentGenerator >
+            <property name="suppressAllComments" value="false"/>&lt;!&ndash; 是否取消注释 &ndash;&gt;
+            <property name="suppressDate" value="false" /> &lt;!&ndash; 是否生成注释代时间戳&ndash;&gt;
+        </commentGenerator>  -->
           
         <!-- jdbc连接 -->  
         <jdbcConnection driverClass="${jdbc_driver}"  
