@@ -10,6 +10,8 @@
 
     <!-- 一个数据库一个context -->  
     <context id="infoGuardian" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="com.gao.plugins.CustomMethod" />
         <!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->
         <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
         <!--<plugin type="org.mybatis.generator.plugins.rename.RenameSqlMapperPlugin">-->

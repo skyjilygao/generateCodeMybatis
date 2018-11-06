@@ -86,7 +86,7 @@ public class MyCommentGenerator implements CommentGenerator{
  
         StringBuilder sb = new StringBuilder();
         innerClass.addJavaDocLine("/**");
-        sb.append(" * ");
+        sb.append(" *");
         sb.append(introspectedTable.getFullyQualifiedTable());
         sb.append(" ");
         sb.append(getDateString());
@@ -156,7 +156,8 @@ public class MyCommentGenerator implements CommentGenerator{
     }
     
     /**
-     * 
+     *
+     * 在方法上添加注解
      *@Title addJavadocTag 
      *@Description: 此方法为其添加了自定义javadoc标签。
      *@param javaElement
@@ -164,7 +165,7 @@ public class MyCommentGenerator implements CommentGenerator{
      *@throws
      */
 	protected void addJavadocTag(JavaElement javaElement, boolean markAsDoNotDelete) {
-        javaElement.addJavaDocLine(" *");
+       /* javaElement.addJavaDocLine(" *");
         StringBuilder sb = new StringBuilder();
         sb.append(" * ");
         sb.append(MergeConstants.NEW_ELEMENT_TAG);
@@ -176,7 +177,7 @@ public class MyCommentGenerator implements CommentGenerator{
             sb.append(' ');
             sb.append(s);
         }
-        javaElement.addJavaDocLine(sb.toString());
+        javaElement.addJavaDocLine(sb.toString());*/
     }
 	
 	
@@ -236,12 +237,12 @@ public class MyCommentGenerator implements CommentGenerator{
 	 */
 	@Override
 	public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
-	  if (suppressAllComments) {
-        return;
-      }
-      method.addJavaDocLine("/**");
-      addJavadocTag(method, false);
-      method.addJavaDocLine(" */");
+//	  if (suppressAllComments) {
+//        return;
+//      }
+//      method.addJavaDocLine("/**");
+//      addJavadocTag(method, false);
+//      method.addJavaDocLine(" */");
 	}
  
 	
