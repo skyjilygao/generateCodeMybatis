@@ -38,7 +38,8 @@ public class SelectBySelectiveMethodGeneratorJavaMapper extends AbstractJavaMapp
         method.setName(methodName);
         FullyQualifiedJavaType parameterType = this.introspectedTable.getRules().calculateAllFieldsClass();
         String paramName = "record";
-        method.addParameter(new Parameter(parameterType, paramName, "@Param(\""+paramName+"\")"));
+//        method.addParameter(new Parameter(parameterType, paramName, "@Param(\""+paramName+"\")"));
+        method.addParameter(new Parameter(parameterType, paramName));
         importedTypes.add(parameterType);
         importedTypes.add(new FullyQualifiedJavaType("org.apache.ibatis.annotations.Param"));
         importedTypes.add(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
