@@ -44,7 +44,7 @@ public class SelectBySelectiveMethodGeneratorJavaMapper extends AbstractJavaMapp
         importedTypes.add(new FullyQualifiedJavaType("org.apache.ibatis.annotations.Param"));
         importedTypes.add(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
         importedTypes.add(new FullyQualifiedJavaType("org.apache.ibatis.annotations.Mapper"));
-        importedTypes.add(new FullyQualifiedJavaType("java.util.List;"));
+        importedTypes.add(new FullyQualifiedJavaType("java.util.List"));
         this.context.getCommentGenerator().addGeneralMethodComment(method, this.introspectedTable);
         this.addMapperAnnotations(interfaze, method);
         if (this.context.getPlugins().clientUpdateByExampleSelectiveMethodGenerated(method, interfaze, this.introspectedTable)) {

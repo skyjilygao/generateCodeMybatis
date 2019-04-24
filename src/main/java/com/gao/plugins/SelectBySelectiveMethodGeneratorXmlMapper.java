@@ -28,6 +28,8 @@ public class SelectBySelectiveMethodGeneratorXmlMapper extends AbstractXmlElemen
         answer.addAttribute(new Attribute("id", methodName));
         answer.addAttribute(new Attribute("resultMap", "BaseResultMap"));
         answer.addAttribute(new Attribute("parameterType", introspectedTable.getBaseRecordType()));
+        /*answer.addAttribute(new Attribute("useGeneratedKeys", "true"));
+        answer.addAttribute(new Attribute("keyProperty", "id"));*/
         this.context.getCommentGenerator().addComment(answer);
         StringBuilder sb = new StringBuilder();
         sb.append("select ");
