@@ -12,3 +12,6 @@ Maven Project .
    1. 注:schema：在mysql中就是DB name，在pgsql中就是模式名称
 
 3. 运行GeneratorMain.main方法即可
+
+### 参考
+生成controller/service部分参考：https://github.com/linweiyu21/ControllerServicePlugin.git

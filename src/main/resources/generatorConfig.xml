@@ -1,5 +1,152 @@
-<?xml version="1.0" encoding="UTF-8" ?>  
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >  
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<!-- 内部DTD 亦可通过外部DTD来实现-->
+<!--&lt;!&ndash;<!DOCTYPE generatorConfiguration-->
+
+        <!--[-->
+                <!--<!ELEMENT generatorConfiguration (properties?, classPathEntry*, context+)>-->
+
+                <!--<!ELEMENT properties EMPTY>-->
+                <!--<!ATTLIST properties-->
+                        <!--resource CDATA #IMPLIED-->
+                        <!--url CDATA #IMPLIED>-->
+                <!--&lt;!&ndash;-->
+                    <!--括号里是声明出现的次序:-->
+                    <!--*: 出现任意次,包括0次-->
+                    <!--?: 出现最多一次-->
+                    <!--|:选择之一-->
+                    <!--+: 出现最少1次-->
+                    <!--如果没有上述符号:必须且只能出现一次-->
+                 <!--&ndash;&gt;-->
+                <!--<!ELEMENT context (property*, plugin*, commentGenerator?, (connectionFactory | jdbcConnection), javaTypeResolver?,-->
+                        <!--javaModelGenerator, sqlMapGenerator, javaClientGenerator, javaServiceGenerator,table+)>-->
+                <!--<!ATTLIST context id ID #REQUIRED-->
+                        <!--defaultModelType CDATA #IMPLIED-->
+                        <!--targetRuntime CDATA #IMPLIED-->
+                        <!--introspectedColumnImpl CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT connectionFactory (property*)>-->
+                <!--<!ATTLIST connectionFactory-->
+                        <!--type CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT jdbcConnection (property*)>-->
+                <!--<!ATTLIST jdbcConnection-->
+                        <!--driverClass CDATA #REQUIRED-->
+                        <!--connectionURL CDATA #REQUIRED-->
+                        <!--userId CDATA #IMPLIED-->
+                        <!--password CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT classPathEntry EMPTY>-->
+                <!--<!ATTLIST classPathEntry-->
+                        <!--location CDATA #REQUIRED>-->
+
+                <!--<!ELEMENT property EMPTY>-->
+                <!--<!ATTLIST property-->
+                        <!--name CDATA #REQUIRED-->
+                        <!--value CDATA #REQUIRED>-->
+
+                <!--<!ELEMENT plugin (property*)>-->
+                <!--<!ATTLIST plugin-->
+                        <!--type CDATA #REQUIRED>-->
+
+                <!--<!ELEMENT javaModelGenerator (property*)>-->
+                <!--<!ATTLIST javaModelGenerator-->
+                        <!--targetPackage CDATA #REQUIRED-->
+                        <!--targetProject CDATA #REQUIRED>-->
+
+                <!--<!ELEMENT javaTypeResolver (property*)>-->
+                <!--<!ATTLIST javaTypeResolver-->
+                        <!--type CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT sqlMapGenerator (property*)>-->
+                <!--<!ATTLIST sqlMapGenerator-->
+                        <!--targetPackage CDATA #REQUIRED-->
+                        <!--targetProject CDATA #REQUIRED>-->
+
+                <!--<!ELEMENT javaClientGenerator (property*)>-->
+                <!--<!ATTLIST javaClientGenerator-->
+                        <!--type CDATA #REQUIRED-->
+                        <!--targetPackage CDATA #REQUIRED-->
+                        <!--targetProject CDATA #REQUIRED-->
+                        <!--implementationPackage CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT javaServiceGenerator (property*)>-->
+                <!--<!ATTLIST javaServiceGenerator-->
+                        <!--targetPackage CDATA #REQUIRED-->
+                        <!--implementationPackage CDATA #REQUIRED-->
+                        <!--targetProject CDATA #REQUIRED>-->
+
+                <!--<!ELEMENT table (property*, generatedKey?, domainObjectRenamingRule?, columnRenamingRule?, (columnOverride | ignoreColumn | ignoreColumnsByRegex)*) >-->
+                <!--<!ATTLIST table-->
+                        <!--catalog CDATA #IMPLIED-->
+                        <!--schema CDATA #IMPLIED-->
+                        <!--tableName CDATA #REQUIRED-->
+                        <!--alias CDATA #IMPLIED-->
+                        <!--domainObjectName CDATA #IMPLIED-->
+                        <!--mapperName CDATA #IMPLIED-->
+                        <!--sqlProviderName CDATA #IMPLIED-->
+                        <!--enableInsert CDATA #IMPLIED-->
+                        <!--enableSelectByPrimaryKey CDATA #IMPLIED-->
+                        <!--enableSelectByExample CDATA #IMPLIED-->
+                        <!--enableUpdateByPrimaryKey CDATA #IMPLIED-->
+                        <!--enableDeleteByPrimaryKey CDATA #IMPLIED-->
+                        <!--enableDeleteByExample CDATA #IMPLIED-->
+                        <!--enableCountByExample CDATA #IMPLIED-->
+                        <!--enableUpdateByExample CDATA #IMPLIED-->
+                        <!--selectByPrimaryKeyQueryId CDATA #IMPLIED-->
+                        <!--selectByExampleQueryId CDATA #IMPLIED-->
+                        <!--modelType CDATA #IMPLIED-->
+                        <!--escapeWildcards CDATA #IMPLIED-->
+                        <!--delimitIdentifiers CDATA #IMPLIED-->
+                        <!--delimitAllColumns CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT columnOverride (property*)>-->
+                <!--<!ATTLIST columnOverride-->
+                        <!--column CDATA #REQUIRED-->
+                        <!--property CDATA #IMPLIED-->
+                        <!--javaType CDATA #IMPLIED-->
+                        <!--jdbcType CDATA #IMPLIED-->
+                        <!--typeHandler CDATA #IMPLIED-->
+                        <!--isGeneratedAlways CDATA #IMPLIED-->
+                        <!--delimitedColumnName CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT ignoreColumn EMPTY>-->
+                <!--<!ATTLIST ignoreColumn-->
+                        <!--column CDATA #REQUIRED-->
+                        <!--delimitedColumnName CDATA #IMPLIED>-->
+
+
+                <!--<!ELEMENT ignoreColumnsByRegex (except*)>-->
+                <!--<!ATTLIST ignoreColumnsByRegex-->
+                        <!--pattern CDATA #REQUIRED>-->
+
+                <!--<!ELEMENT except EMPTY>-->
+                <!--<!ATTLIST except-->
+                        <!--column CDATA #REQUIRED-->
+                        <!--delimitedColumnName CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT generatedKey EMPTY>-->
+                <!--<!ATTLIST generatedKey-->
+                        <!--column CDATA #REQUIRED-->
+                        <!--sqlStatement CDATA #REQUIRED-->
+                        <!--identity CDATA #IMPLIED-->
+                        <!--type CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT domainObjectRenamingRule EMPTY>-->
+                <!--<!ATTLIST domainObjectRenamingRule-->
+                        <!--searchString CDATA #REQUIRED-->
+                        <!--replaceString CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT columnRenamingRule EMPTY>-->
+                <!--<!ATTLIST columnRenamingRule-->
+                        <!--searchString CDATA #REQUIRED-->
+                        <!--replaceString CDATA #IMPLIED>-->
+
+                <!--<!ELEMENT commentGenerator (property*)>-->
+                <!--<!ATTLIST commentGenerator-->
+                        <!--type CDATA #IMPLIED>-->
+                <!--] PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >&ndash;&gt;-->
+
 <generatorConfiguration>  
     <!-- 引入配置文件 -->  
     <properties resource="generator.properties"/>  
@@ -18,7 +165,14 @@
             <property name="searchString" value="Example$" />
             <property name="replaceString" value="Dao" />
         </plugin>
-
+        <plugin type="com.gao.plugins.ControllerServicePlugin">
+            <!-- 是否生成 Controller 与 Service 类 -->
+            <property name="generate.controller.service" value="true"/>
+            <property name="targetProject" value="${project}"/>
+            <property name="service.package" value="${package}.service"/>
+            <!-- Controller 的包路径 -->
+            <property name="web.package" value="${package}.controller"/>
+        </plugin>
         <!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->
         <!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">-->
             <!--<property name="searchString" value="Example$" />-->
@@ -70,7 +224,9 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
-
+        <!--<javaServiceGenerator targetPackage="${package}.service" targetProject="${project}"
+                              implementationPackage="${package}.service">
+        </javaServiceGenerator>-->
 
         <!-- 配置表信息，这里没生成一张表，这里需要改变一次对应表名 -->
         <table schema="${schema}" tableName="${tableName}"
