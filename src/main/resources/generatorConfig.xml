@@ -70,6 +70,10 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
+        <javaServiceGenerator targetPackage="com.shsoft.platform.service" targetProject="src/main/java"
+                              implementationPackage="com.shsoft.platform.service">
+        </javaServiceGenerator>
+
         <!-- 配置表信息，这里没生成一张表，这里需要改变一次对应表名 -->
         <table schema="${schema}" tableName="${tableName}"
             domainObjectName="${domainObjectName}" enableCountByExample="false"
