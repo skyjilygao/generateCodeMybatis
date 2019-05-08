@@ -81,8 +81,10 @@
             <!-- 忽略列，不生成bean 字段   
             <ignoreColumn column="FRED" />-->  
             <!-- 指定列的java数据类型   
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->  
-        </table>  
-  
-    </context>  
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
+            <!-- 在insert中生成useGeneratedKeys="true" keyProperty="id" -->
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+    </context>
 </generatorConfiguration>
