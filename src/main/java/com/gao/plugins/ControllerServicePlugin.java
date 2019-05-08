@@ -26,6 +26,7 @@ public class ControllerServicePlugin extends PluginAdapter {
 
     private static final String IS_GENERATE_CONTROLLER_SERVICE = "generate.controller.service";
 
+    private final static String BASE_SERVICE_NAME = "Base2Service";
     @Override
     public boolean validate(List<String> warnings) {
         logger.info("--- ControllerServicePlugin validate invoke");
@@ -504,12 +505,40 @@ public class ControllerServicePlugin extends PluginAdapter {
      */
     private void generateServiceFile(IntrospectedTable introspectedTable, List<GeneratedJavaFile> super_result, String domainObjectName, String modalFullName, String targetProject, String servicePackage, String serviceImplPackage) {
         // 生成Service接口
+        generateBaseServiceJavaFile(introspectedTable, super_result, domainObjectName, targetProject, servicePackage);
         generateServiceJavaFile(introspectedTable, super_result, domainObjectName, targetProject, servicePackage);
 
         // 生成ServiceImpl类
         generateServiceImplJavaFile(introspectedTable, super_result, domainObjectName, modalFullName, targetProject, servicePackage, serviceImplPackage);
     }
 
+    /**
+     * // 生成Service接口
+     *
+     * @param introspectedTable
+     * @param super_result
+     * @param domainObjectName
+     * @param targetProject
+     * @param servicePackage
+     */
+    private void generateBaseServiceJavaFile(IntrospectedTable introspectedTable, List<GeneratedJavaFile> super_result, String domainObjectName, String targetProject, String servicePackage) {
+        // 生成Service接口
+        // typeName为接口的全限定类名
+        String typeName = servicePackage + "." + BASE_SERVICE_NAME;
+        Interface serviceCompilationUnit = new Interface(typeName+"<T>");
+        serviceCompilationUnit.setVisibility(JavaVisibility.PUBLIC);
+
+        // 为接口添加方法
+        setBaseServiceMethod(serviceCompilationUnit, introspectedTable);
+
+        // 为接口添加import
+        serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType("java.util.List"));
+
+        GeneratedJavaFile service = new GeneratedJavaFile(serviceCompilationUnit, targetProject, "UTF-8", getContext().getJavaFormatter());
+
+        // mybatis会根据List<GeneratedJavaFile> super_result中的GeneratedJavaFile实例来生成对应的Java文件
+        super_result.add(service);
+    }
     /**
      * // 生成Service接口
      *
@@ -527,17 +556,57 @@ public class ControllerServicePlugin extends PluginAdapter {
         serviceCompilationUnit.setVisibility(JavaVisibility.PUBLIC);
 
         // 为接口添加方法
-        setServiceMethod(serviceCompilationUnit, introspectedTable);
+//        setServiceMethod(serviceCompilationUnit, introspectedTable);
 
         // 为接口添加import
-        serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType("java.util.List"));
-
+//        serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType("java.util.List"));
+        serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType(introspectedTable.getBaseRecordType()));
+        serviceCompilationUnit.addSuperInterface(new FullyQualifiedJavaType(BASE_SERVICE_NAME + "<" + domainObjectName + ">"));
         GeneratedJavaFile service = new GeneratedJavaFile(serviceCompilationUnit, targetProject, "UTF-8", getContext().getJavaFormatter());
 
         // mybatis会根据List<GeneratedJavaFile> super_result中的GeneratedJavaFile实例来生成对应的Java文件
         super_result.add(service);
     }
 
+    /**
+     * 为接口添加方法
+     *
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setBaseServiceMethod(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        // 创建deleteByPrimaryKey方法,对应ServiceImpl中的deleteByPrimaryKey方法
+        // 参考DeleteByPrimaryKeyMethodGenerator.addInterfaceElements()方法
+//        addDeleteByPrimarykeyMethod4Interface(serviceCompilationUnit, introspectedTable);
+        setAddOrUpdate(serviceCompilationUnit, introspectedTable);
+        setDelete(serviceCompilationUnit, introspectedTable);
+        setGet(serviceCompilationUnit, introspectedTable);
+        setList2(serviceCompilationUnit, introspectedTable);
+        setList(serviceCompilationUnit, introspectedTable);
+        setListOfPaging(serviceCompilationUnit, introspectedTable);
+        // 创建insert方法,对应ServiceImpl中的insert方法
+        // 参考InsertMethodGenerator.addInterfaceElements()方法
+        /*addInsertMethod4Interface(serviceCompilationUnit, introspectedTable);
+
+        // 创建insertSelective方法,对应ServiceImpl中的insertSelective方法
+        // 参考InsertSelectiveMethodGenerator.addInterfaceElements()方法
+        addInsertSelectiveMethod4Interface(serviceCompilationUnit, introspectedTable);
+
+        // 创建selectByPrimaryKey方法,对应ServiceImpl中的selectByPrimaryKey方法
+        // 参考SelectByPrimaryKeyMethodGenerator.addInterfaceElements()方法
+        addSelectByPrimaryKeyMethod4Interface(serviceCompilationUnit, introspectedTable);
+
+        // 创建updateByPrimaryKeySelective方法,对应ServiceImpl中的updateByPrimaryKeySelective方法
+        // 参考UpdateByPrimaryKeySelectiveMethodGenerator.addInterfaceElements()方法
+        addUpdateByPrimaryKeySelectiveMethod4Interface(serviceCompilationUnit, introspectedTable);
+
+        // 创建updateByPrimaryKey方法,对应ServiceImpl中的updateByPrimaryKey方法
+        // 参考UpdateByPrimaryKeyMethodGenerator.addInterfaceElements()方法
+        addUpdateByPrimaryKeyMethod4Interface(serviceCompilationUnit, introspectedTable);*/
+
+        // 创建selectByPage方法,对应ServiceImpl中的selectByPage方法,与 https://github.com/linweiyu21/PaginationPlugin 插件配合时使用
+        //addSelectByPageMethod4Interface(serviceCompilationUnit, introspectedTable);
+    }
     /**
      * 为接口添加方法
      *
@@ -750,6 +819,37 @@ public class ControllerServicePlugin extends PluginAdapter {
         }
     }
 
+    /**
+     * 新增或更新
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setAddOrUpdate(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+
+        method.setReturnType(FullyQualifiedJavaType.getIntInstance());
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setName("addOrUpdate");
+
+        FullyQualifiedJavaType parameterType;
+//        parameterType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
+        parameterType = new FullyQualifiedJavaType("T");
+
+        importedTypes.add(parameterType);
+        method.addParameter(new Parameter(parameterType, "entity")); //$NON-NLS-1$
+
+        // 不需要方法实现体
+
+        if (context.getPlugins().clientInsertMethodGenerated(method, serviceCompilationUnit,
+                introspectedTable)) {
+            serviceCompilationUnit.addImportedTypes(importedTypes);
+            serviceCompilationUnit.addMethod(method);
+        }
+    }
+
     private void addDeleteByPrimarykeyMethod4Interface(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
         String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
 
@@ -786,6 +886,163 @@ public class ControllerServicePlugin extends PluginAdapter {
     }
 
     /**
+     * 新增delete
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setDelete(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
+        method.setName("delete");
+
+        List<IntrospectedColumn> introspectedColumns = introspectedTable
+                .getPrimaryKeyColumns();
+        for (IntrospectedColumn introspectedColumn : introspectedColumns) {
+            FullyQualifiedJavaType type = introspectedColumn
+                    .getFullyQualifiedJavaType();
+            importedTypes.add(type);
+            Parameter parameter = new Parameter(type, introspectedColumn
+                    .getJavaProperty());
+            method.addParameter(parameter);
+        }
+
+        // 不需要方法实现体
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, serviceCompilationUnit, introspectedTable)) {
+            serviceCompilationUnit.addImportedTypes(importedTypes);
+            serviceCompilationUnit.addMethod(method);
+        }
+    }
+
+    /**
+     * 新增delete
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setGet(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(new FullyQualifiedJavaType("T"));
+        method.setName("get");
+
+        List<IntrospectedColumn> introspectedColumns = introspectedTable
+                .getPrimaryKeyColumns();
+        for (IntrospectedColumn introspectedColumn : introspectedColumns) {
+            FullyQualifiedJavaType type = introspectedColumn
+                    .getFullyQualifiedJavaType();
+            importedTypes.add(type);
+            Parameter parameter = new Parameter(type, introspectedColumn
+                    .getJavaProperty());
+            method.addParameter(parameter);
+        }
+
+        // 不需要方法实现体
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, serviceCompilationUnit, introspectedTable)) {
+            serviceCompilationUnit.addImportedTypes(importedTypes);
+            serviceCompilationUnit.addMethod(method);
+        }
+    }
+
+    /**
+     * 新增 listOfPaging
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setListOfPaging(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(new FullyQualifiedJavaType("PageInfo"));
+        method.setName("listOfPaging");
+
+        // 导入相关包
+        serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType("com.github.pagehelper.PageInfo"));
+
+//        int pageNum, int pageSize, String sidx, String sord, T query
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("int"), "pageNum"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("int"), "pageSize"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("String"), "sidx"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("String"), "sord"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("T"), "query"));
+
+        // 不需要方法实现体
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, serviceCompilationUnit, introspectedTable)) {
+            serviceCompilationUnit.addImportedTypes(importedTypes);
+            serviceCompilationUnit.addMethod(method);
+        }
+    }
+
+    /**
+     * 新增 listOfPaging
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setList(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(new FullyQualifiedJavaType("List<T>"));
+        method.setName("list");
+
+        // 导入相关包
+        serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType("com.github.pagehelper.PageInfo"));
+
+//        int pageNum, int pageSize, String sidx, String sord, T query
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("int"), "pageNum"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("int"), "pageSize"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("String"), "sidx"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("String"), "sord"));
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("T"), "query"));
+
+        // 不需要方法实现体
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, serviceCompilationUnit, introspectedTable)) {
+            serviceCompilationUnit.addImportedTypes(importedTypes);
+            serviceCompilationUnit.addMethod(method);
+        }
+    }
+    /**
+     * 新增 listOfPaging
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setList2(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(new FullyQualifiedJavaType("List<T>"));
+        method.setName("list");
+
+        // 导入相关包
+        serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType("com.github.pagehelper.PageInfo"));
+
+//        int pageNum, int pageSize, String sidx, String sord, T query
+        method.addParameter(new Parameter(new FullyQualifiedJavaType("T"), "query"));
+
+        // 不需要方法实现体
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, serviceCompilationUnit, introspectedTable)) {
+            serviceCompilationUnit.addImportedTypes(importedTypes);
+            serviceCompilationUnit.addMethod(method);
+        }
+    }
+
+    /**
      * 生成ServiceImpl,Service接口的实现类
      *
      * @param introspectedTable
@@ -805,7 +1062,6 @@ public class ControllerServicePlugin extends PluginAdapter {
         serviceImplCompilationUnit.setVisibility(JavaVisibility.PUBLIC);
         // 设置类实现的接口
         serviceImplCompilationUnit.addSuperInterface(new FullyQualifiedJavaType(domainObjectName + "Service"));
-
         // 此类所在包
         String packageName = serviceImplCompilationUnit.getType().getPackageName();
 
@@ -877,11 +1133,12 @@ public class ControllerServicePlugin extends PluginAdapter {
     private void setServiceImplMethod(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         // 创建deleteByPrimaryKey方法,对应DAO中的deleteByPrimaryKey方法
         // 参考DeleteByPrimaryKeyMethodGenerator.addInterfaceElements()方法
-        addDeleteByPrimarykeyMethod4Impl(topLevelClass, introspectedTable);
+        serviceImplAddDelete(topLevelClass, introspectedTable);
+//        addDeleteByPrimarykeyMethod4Impl(topLevelClass, introspectedTable);
 
         // 创建insert方法,对应DAO中的insert方法
         // 参考InsertMethodGenerator.addInterfaceElements()方法
-        addInsertMethod4Impl(topLevelClass, introspectedTable);
+        /*addInsertMethod4Impl(topLevelClass, introspectedTable);
 
         // 创建insertSelective方法,对应DAO中的insertSelective方法
         // 参考InsertSelectiveMethodGenerator.addInterfaceElements()方法
@@ -898,7 +1155,7 @@ public class ControllerServicePlugin extends PluginAdapter {
         // 创建updateByPrimaryKey方法,对应DAO中的updateByPrimaryKey方法
         // 参考UpdateByPrimaryKeyMethodGenerator.addInterfaceElements()方法
         addUpdateByPrimaryKeyMethod4Impl(topLevelClass, introspectedTable);
-
+*/
         // 创建selectByPage方法,对应DAO中的selectByPage方法,与 https://github.com/linweiyu21/PaginationPlugin 插件配合时使用
         //addSelectByPageMethod4Impl(topLevelClass, introspectedTable);
     }
@@ -1120,6 +1377,54 @@ public class ControllerServicePlugin extends PluginAdapter {
         }
         sb.delete(sb.lastIndexOf(","), sb.length());
         method.addBodyLine("return this." + toLowerCaseFirstOne(domainObjectName) + "Mapper." + introspectedTable.getDeleteByPrimaryKeyStatementId() + "(" + sb.toString() + ");");
+
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, topLevelClass, introspectedTable)) {
+            topLevelClass.addImportedTypes(importedTypes);
+            topLevelClass.addMethod(method);
+        }
+    }
+
+    /**
+     * serviceImpl delete 方法
+     * @param topLevelClass
+     * @param introspectedTable
+     */
+    public void serviceImplAddDelete(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
+        method.setName("delete");
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine("*");
+        method.addJavaDocLine("* @param id");
+        method.addJavaDocLine("* @return");
+        method.addJavaDocLine("*/");
+        List<IntrospectedColumn> introspectedColumns = introspectedTable
+                .getPrimaryKeyColumns();
+
+        for (IntrospectedColumn introspectedColumn : introspectedColumns) {
+            FullyQualifiedJavaType type = introspectedColumn
+                    .getFullyQualifiedJavaType();
+            importedTypes.add(type);
+            Parameter parameter = new Parameter(type, introspectedColumn
+                    .getJavaProperty());
+            method.addParameter(parameter);
+        }
+        // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
+        List<Parameter> parameters = method.getParameters();
+        StringBuilder sb = new StringBuilder();
+        for (Parameter parameter : parameters) {
+            sb.append(parameter.getName());
+            sb.append(",");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());
+        method.addBodyLine("int c = 0;");
+        method.addBodyLine("c = " + toLowerCaseFirstOne(domainObjectName) + "Mapper." + introspectedTable.getDeleteByPrimaryKeyStatementId() + "(" + sb.toString() + ");");
+        method.addBodyLine("return c == 1 ? true : false;");
 
         if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
                 method, topLevelClass, introspectedTable)) {

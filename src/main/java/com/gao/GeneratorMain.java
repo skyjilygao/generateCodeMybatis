@@ -95,6 +95,7 @@ public class GeneratorMain {
 //            dir.delete();
             dir.mkdirs();
         }
+        System.out.println("del....ok" );
     }
     //删除文件夹
     public static void delFolder(String folderPath) {
