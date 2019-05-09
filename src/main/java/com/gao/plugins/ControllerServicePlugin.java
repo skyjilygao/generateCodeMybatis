@@ -1,5 +1,6 @@
 package com.gao.plugins;
 
+import com.gao.MyCommentGenerator;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -26,7 +28,7 @@ public class ControllerServicePlugin extends PluginAdapter {
 
     private static final String IS_GENERATE_CONTROLLER_SERVICE = "generate.controller.service";
 
-    private final static String BASE_SERVICE_NAME = "Base2Service";
+    private final static String BASE_SERVICE_NAME = "BaseService";
     @Override
     public boolean validate(List<String> warnings) {
         logger.info("--- ControllerServicePlugin validate invoke");
@@ -830,16 +832,14 @@ public class ControllerServicePlugin extends PluginAdapter {
         Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
         Method method = new Method();
 
-        method.setReturnType(FullyQualifiedJavaType.getIntInstance());
+        method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setName("addOrUpdate");
 
         FullyQualifiedJavaType parameterType;
-//        parameterType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
         parameterType = new FullyQualifiedJavaType("T");
-
         importedTypes.add(parameterType);
-        method.addParameter(new Parameter(parameterType, "entity")); //$NON-NLS-1$
+        method.addParameter(new Parameter(parameterType, "entity"));
 
         // 不需要方法实现体
 
@@ -968,7 +968,6 @@ public class ControllerServicePlugin extends PluginAdapter {
         // 导入相关包
         serviceCompilationUnit.addImportedType(new FullyQualifiedJavaType("com.github.pagehelper.PageInfo"));
 
-//        int pageNum, int pageSize, String sidx, String sord, T query
         method.addParameter(new Parameter(new FullyQualifiedJavaType("int"), "pageNum"));
         method.addParameter(new Parameter(new FullyQualifiedJavaType("int"), "pageSize"));
         method.addParameter(new Parameter(new FullyQualifiedJavaType("String"), "sidx"));
@@ -1065,7 +1064,13 @@ public class ControllerServicePlugin extends PluginAdapter {
         // 此类所在包
         String packageName = serviceImplCompilationUnit.getType().getPackageName();
 
+        serviceImplCompilationUnit.addJavaDocLine("/**");
+        serviceImplCompilationUnit.addJavaDocLine("* @author " + MyCommentGenerator.author);
+        serviceImplCompilationUnit.addJavaDocLine("* @sine " + LocalDateTime.now());
+        serviceImplCompilationUnit.addJavaDocLine("* "+domainObjectName +" service");
+        serviceImplCompilationUnit.addJavaDocLine("*/");
         // 为类添加注解
+        serviceImplCompilationUnit.addAnnotation("@Slf4j");
         serviceImplCompilationUnit.addAnnotation("@Service");
 
         // 为类添加Field
@@ -1079,8 +1084,13 @@ public class ControllerServicePlugin extends PluginAdapter {
         serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType(servicePackage + "." + domainObjectName + "Service"));
         serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("org.springframework.beans.factory.annotation.Autowired"));
         serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Service"));
+        serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("lombok.extern.slf4j.Slf4j"));
         serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType(modalFullName));// 对应的实体类
+        serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("java.util.Date"));
         serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("java.util.List"));
+
+        serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("com.github.pagehelper.PageHelper"));
+        serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("com.github.pagehelper.PageInfo"));
 
         GeneratedJavaFile service = new GeneratedJavaFile(serviceImplCompilationUnit, targetProject, "UTF-8", getContext().getJavaFormatter());
 
@@ -1096,7 +1106,7 @@ public class ControllerServicePlugin extends PluginAdapter {
      */
     private void setServiceImplField(TopLevelClass serviceImplCompilationUnit, IntrospectedTable introspectedTable) {
         // 添加日志类
-        Field loggerField = new Field();
+        /*Field loggerField = new Field();
         loggerField.setName("logger");
         loggerField.setVisibility(JavaVisibility.PRIVATE);
         loggerField.setFinal(true);
@@ -1104,7 +1114,7 @@ public class ControllerServicePlugin extends PluginAdapter {
         loggerField.setInitializationString("LoggerFactory.getLogger(this.getClass())");
         serviceImplCompilationUnit.addField(loggerField);
         serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("org.slf4j.Logger"));
-        serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("org.slf4j.LoggerFactory"));
+        serviceImplCompilationUnit.addImportedType(new FullyQualifiedJavaType("org.slf4j.LoggerFactory"));*/
 
         // 实体类的类名
         String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
@@ -1134,6 +1144,11 @@ public class ControllerServicePlugin extends PluginAdapter {
         // 创建deleteByPrimaryKey方法,对应DAO中的deleteByPrimaryKey方法
         // 参考DeleteByPrimaryKeyMethodGenerator.addInterfaceElements()方法
         serviceImplAddDelete(topLevelClass, introspectedTable);
+        serviceImplSetAddOrUpdate(topLevelClass, introspectedTable);
+        serviceImplSetGet(topLevelClass, introspectedTable);
+        serviceImplSetList2(topLevelClass, introspectedTable);
+        serviceImplSetList(topLevelClass, introspectedTable);
+        serviceImplSetListOfPaging(topLevelClass, introspectedTable);
 //        addDeleteByPrimarykeyMethod4Impl(topLevelClass, introspectedTable);
 
         // 创建insert方法,对应DAO中的insert方法
@@ -1395,6 +1410,7 @@ public class ControllerServicePlugin extends PluginAdapter {
 
         Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
         Method method = new Method();
+        method.addAnnotation("@Override");
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
         method.setName("delete");
@@ -1436,6 +1452,282 @@ public class ControllerServicePlugin extends PluginAdapter {
             topLevelClass.addMethod(method);
         }
     }
+ /**
+     * serviceImpl get 方法
+     * @param topLevelClass
+     * @param introspectedTable
+     */
+    public void serviceImplSetGet(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.addAnnotation("@Override");
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(new FullyQualifiedJavaType(domainObjectName));
+        method.setName(BaseServiceMethod.get);
+
+        List<IntrospectedColumn> introspectedColumns = introspectedTable
+                .getPrimaryKeyColumns();
+        List<String> methodJavaDocParam = new ArrayList<>();
+        for (IntrospectedColumn introspectedColumn : introspectedColumns) {
+            FullyQualifiedJavaType type = introspectedColumn
+                    .getFullyQualifiedJavaType();
+            importedTypes.add(type);
+            String paramName = introspectedColumn.getJavaProperty();
+            methodJavaDocParam.add(paramName);
+            Parameter parameter = new Parameter(type, paramName);
+            method.addParameter(parameter);
+    }
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine("* " + method.getName());
+        methodJavaDocParam.forEach(paramName -> {
+            method.addJavaDocLine("* @param " + paramName);
+        });
+        method.addJavaDocLine("* @return");
+        method.addJavaDocLine("*/");
+        // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
+        List<Parameter> parameters = method.getParameters();
+        StringBuilder sb = new StringBuilder();
+        for (Parameter parameter : parameters) {
+            sb.append(parameter.getName());
+            sb.append(",");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());
+
+        String returnName = toLowerCaseFirstOne(domainObjectName);
+        method.addBodyLine(domainObjectName + " " + returnName + ";");
+        method.addBodyLine(returnName + " = " + toLowerCaseFirstOne(domainObjectName) + "Mapper." + introspectedTable.getSelectByPrimaryKeyStatementId() + "(" + sb.toString() + ");");
+        method.addBodyLine("return " + returnName + ";");
+
+        if (context.getPlugins().clientSelectByPrimaryKeyMethodGenerated(
+                method, topLevelClass, introspectedTable)) {
+            topLevelClass.addImportedTypes(importedTypes);
+            topLevelClass.addMethod(method);
+        }
+    }
+
+    /**
+     * serviceImpl addOrUpdate 方法
+     * @param topLevelClass
+     * @param introspectedTable
+     */
+    public void serviceImplSetAddOrUpdate(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.addAnnotation("@Override");
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
+        method.setName(BaseServiceMethod.addOrUpdate);
+        List<String> methodJavaDocParam = new ArrayList<>();
+
+        FullyQualifiedJavaType parameterType = new FullyQualifiedJavaType(domainObjectName);
+        importedTypes.add(parameterType);
+        String pName = "entity";
+        method.addParameter(new Parameter(parameterType, pName));
+        methodJavaDocParam.add(pName);
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine("* " + method.getName());
+        methodJavaDocParam.forEach(paramName -> {
+            method.addJavaDocLine("* @param " + paramName);
+        });
+        method.addJavaDocLine("* @return");
+        method.addJavaDocLine("*/");
+        // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
+        List<Parameter> parameters = method.getParameters();
+        StringBuilder sb = new StringBuilder();
+        for (Parameter parameter : parameters) {
+            sb.append(parameter.getName());
+            sb.append(",");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());
+        method.addBodyLine("int c = 0;");
+        method.addBodyLine("entity.setGmtModified(new Date());");
+        method.addBodyLine("if (entity.getId() != null) {");
+        method.addBodyLine("c = " + toLowerCaseFirstOne(domainObjectName) + "Mapper." + introspectedTable.getUpdateByPrimaryKeySelectiveStatementId() + "(" + sb.toString() + ");");
+        method.addBodyLine("} else {");
+        method.addBodyLine("entity.setGmtCreate(new Date());");
+        method.addBodyLine("c = " + toLowerCaseFirstOne(domainObjectName) + "Mapper." + introspectedTable.getInsertSelectiveStatementId() + "(" + sb.toString() + ");");
+        method.addBodyLine("}");
+        method.addBodyLine("return c == 1 ? true : false;");
+
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, topLevelClass, introspectedTable)) {
+            topLevelClass.addImportedTypes(importedTypes);
+            topLevelClass.addMethod(method);
+        }
+    }
+
+    /**
+     * serviceImpl list 方法
+     * @param topLevelClass
+     * @param introspectedTable
+     */
+    public void serviceImplSetList2(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.addAnnotation("@Override");
+        method.setVisibility(JavaVisibility.PUBLIC);
+        String returnType = "List<" + domainObjectName + ">";
+        method.setReturnType(new FullyQualifiedJavaType(returnType));
+        method.setName(BaseServiceMethod.list);
+        List<String> methodJavaDocParam = new ArrayList<>();
+
+        FullyQualifiedJavaType parameterType = new FullyQualifiedJavaType(domainObjectName);
+        importedTypes.add(parameterType);
+        String pName = "query";
+        method.addParameter(new Parameter(parameterType, pName));
+        methodJavaDocParam.add(pName);
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine("* " + method.getName());
+        methodJavaDocParam.forEach(paramName -> {
+            method.addJavaDocLine("* @param " + paramName);
+        });
+        method.addJavaDocLine("* @return");
+        method.addJavaDocLine("*/");
+        // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
+        List<Parameter> parameters = method.getParameters();
+        StringBuilder sb = new StringBuilder();
+        for (Parameter parameter : parameters) {
+            sb.append(parameter.getName());
+            sb.append(",");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());
+        String returnName = "list";
+        method.addBodyLine(returnType + " " + returnName + ";");
+        method.addBodyLine(returnName + " = " + toLowerCaseFirstOne(domainObjectName) + "Mapper.selectBySelective" + "(" + sb.toString() + ");");
+        method.addBodyLine("return " + returnName + ";");
+
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, topLevelClass, introspectedTable)) {
+            topLevelClass.addImportedTypes(importedTypes);
+            topLevelClass.addMethod(method);
+        }
+    }
+
+    /**
+     * serviceImpl list 方法：分页
+     * @param topLevelClass
+     * @param introspectedTable
+     */
+    public void serviceImplSetList(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.addAnnotation("@Override");
+        method.setVisibility(JavaVisibility.PUBLIC);
+        String returnType = "List<" + domainObjectName + ">";
+        method.setReturnType(new FullyQualifiedJavaType(returnType));
+        method.setName(BaseServiceMethod.list);
+        List<String> methodJavaDocParam = new ArrayList<>();
+
+        FullyQualifiedJavaType parameterType = new FullyQualifiedJavaType(domainObjectName);
+        importedTypes.add(parameterType);
+        List<ParameterTypeName> parameterList = new ArrayList<>();
+        parameterList.add(new ParameterTypeName("int", "pageNum"));
+        parameterList.add(new ParameterTypeName("int", "pageSize"));
+        parameterList.add(new ParameterTypeName("String", "sidx"));
+        parameterList.add(new ParameterTypeName("String", "sord"));
+        String pName = "query";
+        parameterList.add(new ParameterTypeName(domainObjectName, pName));
+        parameterList.forEach(parameterTypeName -> {
+            method.addParameter(new Parameter(new FullyQualifiedJavaType(parameterTypeName.getType()), parameterTypeName.getName()));
+            methodJavaDocParam.add(parameterTypeName.getName());
+        });
+
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine("* " + method.getName());
+        methodJavaDocParam.forEach(paramName -> {
+            method.addJavaDocLine("* @param " + paramName);
+        });
+        method.addJavaDocLine("* @return");
+        method.addJavaDocLine("*/");
+        // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
+        List<Parameter> parameters = method.getParameters();
+        StringBuilder sb = new StringBuilder(pName);
+        /*for (Parameter parameter : parameters) {
+            sb.append(parameter.getName());
+            sb.append(",");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());*/
+
+        String returnName = "list";
+        method.addBodyLine(returnType + " " + returnName + ";");
+        method.addBodyLine("PageHelper.startPage(pageNum, pageSize, sidx + \" \" + sord);");
+        method.addBodyLine(returnName + " = " + toLowerCaseFirstOne(domainObjectName) + "Mapper.selectBySelective" + "(" + sb.toString() + ");");
+        method.addBodyLine("return " + returnName + ";");
+
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, topLevelClass, introspectedTable)) {
+            topLevelClass.addImportedTypes(importedTypes);
+            topLevelClass.addMethod(method);
+        }
+    }
+    /**
+     * serviceImpl list 方法：分页，返回分页信息
+     * @param topLevelClass
+     * @param introspectedTable
+     */
+    public void serviceImplSetListOfPaging(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.addAnnotation("@Override");
+        method.setVisibility(JavaVisibility.PUBLIC);
+        String returnType = "PageInfo";
+        method.setReturnType(new FullyQualifiedJavaType(returnType));
+        method.setName(BaseServiceMethod.listOfPaging);
+        List<String> methodJavaDocParam = new ArrayList<>();
+
+        FullyQualifiedJavaType parameterType = new FullyQualifiedJavaType(domainObjectName);
+        importedTypes.add(parameterType);
+        List<ParameterTypeName> parameterList = new ArrayList<>();
+        parameterList.add(new ParameterTypeName("int", "pageNum"));
+        parameterList.add(new ParameterTypeName("int", "pageSize"));
+        parameterList.add(new ParameterTypeName("String", "sidx"));
+        parameterList.add(new ParameterTypeName("String", "sord"));
+        String pName = "query";
+        parameterList.add(new ParameterTypeName(domainObjectName, pName));
+        parameterList.forEach(parameterTypeName -> {
+            method.addParameter(new Parameter(new FullyQualifiedJavaType(parameterTypeName.getType()), parameterTypeName.getName()));
+            methodJavaDocParam.add(parameterTypeName.getName());
+        });
+
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine("* " + method.getName());
+        methodJavaDocParam.forEach(paramName -> {
+            method.addJavaDocLine("* @param " + paramName);
+        });
+
+        method.addJavaDocLine("* @return");
+        method.addJavaDocLine("*/");
+        // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
+        List<Parameter> parameters = method.getParameters();
+        StringBuilder sb = new StringBuilder(pName);
+        /*for (Parameter parameter : parameters) {
+            sb.append(parameter.getName());
+            sb.append(",");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());
+        */
+        // 增加方法体
+        method.addBodyLine("PageHelper.startPage(pageNum, pageSize, sidx + \" \" + sord);");
+        method.addBodyLine("List<" + domainObjectName + "> list = " + toLowerCaseFirstOne(domainObjectName) + "Mapper.selectBySelective" + "(" + sb.toString() + ");");
+        method.addBodyLine("return PageInfo.of(list);");
+//        method.addBodyLine("return " + returnName + ";");
+
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, topLevelClass, introspectedTable)) {
+            topLevelClass.addImportedTypes(importedTypes);
+            topLevelClass.addMethod(method);
+        }
+    }
 
     // 首字母转小写
     private static String toLowerCaseFirstOne(String s) {
@@ -1445,5 +1737,28 @@ public class ControllerServicePlugin extends PluginAdapter {
             return (new StringBuilder()).append(Character.toLowerCase(s.charAt(0))).append(s.substring(1)).toString();
     }
 
+    private static class BaseServiceMethod{
+        public static String get = "get";
+        public static String addOrUpdate = "addOrUpdate";
+        public static String delete = "delete";
+        public static String list = "list";
+        public static String listOfPaging = "listOfPaging";
+    }
+
+    class ParameterTypeName{
+        private String type;
+        private String name;
+        private ParameterTypeName(){}
+        public ParameterTypeName(String type, String name){
+            this.type = type;
+            this.name = name;
+        }
+        public String getType() {
+            return type;
+        }
+        public String getName() {
+            return name;
+        }
+    }
 
 }

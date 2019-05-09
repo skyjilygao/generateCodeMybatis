@@ -50,7 +50,7 @@ public class MyCommentGenerator implements CommentGenerator{
     /**
      * 作者
      */
-    private String author;
+    public static String author;
 
     public MyCommentGenerator() {
         super();
