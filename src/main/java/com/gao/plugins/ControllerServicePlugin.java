@@ -1398,22 +1398,26 @@ public class ControllerServicePlugin extends PluginAdapter {
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
         method.setName("delete");
-        method.addJavaDocLine("/**");
-        method.addJavaDocLine("*");
-        method.addJavaDocLine("* @param id");
-        method.addJavaDocLine("* @return");
-        method.addJavaDocLine("*/");
+
         List<IntrospectedColumn> introspectedColumns = introspectedTable
                 .getPrimaryKeyColumns();
-
+        List<String> methodJavaDocParam = new ArrayList<>();
         for (IntrospectedColumn introspectedColumn : introspectedColumns) {
             FullyQualifiedJavaType type = introspectedColumn
                     .getFullyQualifiedJavaType();
             importedTypes.add(type);
-            Parameter parameter = new Parameter(type, introspectedColumn
-                    .getJavaProperty());
+            String paramName = introspectedColumn.getJavaProperty();
+            methodJavaDocParam.add(paramName);
+            Parameter parameter = new Parameter(type, paramName);
             method.addParameter(parameter);
         }
+        method.addJavaDocLine("/**");
+        method.addJavaDocLine("* " + method.getName());
+        methodJavaDocParam.forEach(paramName -> {
+            method.addJavaDocLine("* @param " + paramName);
+        });
+        method.addJavaDocLine("* @return");
+        method.addJavaDocLine("*/");
         // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
         List<Parameter> parameters = method.getParameters();
         StringBuilder sb = new StringBuilder();
