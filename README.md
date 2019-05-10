@@ -1,4 +1,7 @@
 # generateCodeMybatis
+逆向工程，生成 mapper.xml,dao层，service层（含BaseService）
+也会生成controller，但生成controller代码还未修改，使用不了。
+
 Maven Project .
 
 与 mybatisMappergener 逆向原理相同都是利用mybatis官方的generator包。
