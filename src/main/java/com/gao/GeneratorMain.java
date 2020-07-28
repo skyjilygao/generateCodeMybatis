@@ -46,9 +46,9 @@ public class GeneratorMain {
             boolean overwrite = true;
             String filename = GeneratorMain.class.getClassLoader().getResource("generatorConfig.xml").getFile();
             // msyql
-            String classPathEntry3 = GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
+//            String classPathEntry3 = GeneratorMain.class.getClassLoader().getResource("lib/mysql-connector-java-5.1.38.jar").getFile();
             // postgresql
-            String classPathEntry = GeneratorMain.class.getClassLoader().getResource("lib/postgresql-9.4.1209.jar").getFile();
+//            String classPathEntry = GeneratorMain.class.getClassLoader().getResource("lib/postgresql-9.4.1209.jar").getFile();
 
             //读取配置文件
             File configFile = new File(filename);
@@ -60,7 +60,7 @@ public class GeneratorMain {
                 DefaultShellCallback callback = new DefaultShellCallback(overwrite);
                 MyBatisGenerator myBatisGenerator;
                 try {
-                    config.addClasspathEntry(classPathEntry);
+//                    config.addClasspathEntry(classPathEntry);
                     myBatisGenerator = new MyBatisGenerator(config, callback,
                             warnings);
                     myBatisGenerator.generate(null);
