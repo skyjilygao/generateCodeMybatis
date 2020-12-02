@@ -158,7 +158,11 @@
     <!-- 一个数据库一个context -->  
     <context id="infoGuardian" targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <!-- 自定义方法时，再这里加入插件 开始 -->
         <plugin type="com.gao.plugins.CustomMethod" />
+        <plugin type="com.gao.plugins.batchInsert.BatchInsertMethod" />
+        <!-- 自定义方法时，再这里加入插件 结束 -->
+
         <!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->
         <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
         <!--<plugin type="org.mybatis.generator.plugins.rename.RenameSqlMapperPlugin">-->
