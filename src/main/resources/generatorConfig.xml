@@ -162,6 +162,7 @@
         <plugin type="com.gao.plugins.CustomMethod" />
         <plugin type="com.gao.plugins.batchInsert.BatchInsertMethod" />
         <plugin type="com.gao.plugins.batchInsert.BatchUpdateMethod" />
+        <plugin type="com.gao.plugins.batchInsert.BatchInsertByMultiSqlMethod" />
         <!-- 自定义方法时，再这里加入插件 结束 -->
 
         <!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->
