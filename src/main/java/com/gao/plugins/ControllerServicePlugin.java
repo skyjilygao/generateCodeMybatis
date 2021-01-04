@@ -28,7 +28,7 @@ public class ControllerServicePlugin extends PluginAdapter {
 
     private static final String IS_GENERATE_CONTROLLER_SERVICE = "generate.controller.service";
 
-    private final static String BASE_SERVICE_NAME = "BaseService";
+    private final static String BASE_SERVICE_NAME = "EntityServiceBase";
 
     @Override
     public boolean validate(List<String> warnings) {
