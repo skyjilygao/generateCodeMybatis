@@ -588,6 +588,7 @@ public class ControllerServicePlugin extends PluginAdapter {
         setList2(serviceCompilationUnit, introspectedTable);
         setList(serviceCompilationUnit, introspectedTable);
         setListOfPaging(serviceCompilationUnit, introspectedTable);
+        setBatchInsert(serviceCompilationUnit, introspectedTable);
         // 创建insert方法,对应ServiceImpl中的insert方法
         // 参考InsertMethodGenerator.addInterfaceElements()方法
         /*addInsertMethod4Interface(serviceCompilationUnit, introspectedTable);
@@ -824,6 +825,35 @@ public class ControllerServicePlugin extends PluginAdapter {
         }
     }
 
+    /**
+     * 新增或更新
+     *
+     * @param serviceCompilationUnit
+     * @param introspectedTable
+     */
+    private void setBatchInsert(Interface serviceCompilationUnit, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+
+        method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setName(BaseServiceMethod.batchInsert);
+
+        FullyQualifiedJavaType parameterType;
+        parameterType = new FullyQualifiedJavaType("List<T>");
+        importedTypes.add(parameterType);
+        method.addParameter(new Parameter(parameterType, "entitys"));
+
+        // 不需要方法实现体
+
+        if (context.getPlugins().clientInsertMethodGenerated(method, serviceCompilationUnit,
+                introspectedTable)) {
+            serviceCompilationUnit.addImportedTypes(importedTypes);
+            serviceCompilationUnit.addMethod(method);
+        }
+    }
     /**
      * 新增或更新
      *
@@ -1159,6 +1189,7 @@ public class ControllerServicePlugin extends PluginAdapter {
         serviceImplSetList2(topLevelClass, introspectedTable);
         serviceImplSetList(topLevelClass, introspectedTable);
         serviceImplSetListOfPaging(topLevelClass, introspectedTable);
+        serviceImplSetBatchInsert(topLevelClass, introspectedTable);
 //        addDeleteByPrimarykeyMethod4Impl(topLevelClass, introspectedTable);
 
         // 创建insert方法,对应DAO中的insert方法
@@ -1570,6 +1601,58 @@ public class ControllerServicePlugin extends PluginAdapter {
     }
 
     /**
+     * serviceImpl addOrUpdate 方法
+     *
+     * @param topLevelClass
+     * @param introspectedTable
+     */
+    public void serviceImplSetBatchInsert(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String domainObjectName = introspectedTable.getTableConfiguration().getDomainObjectName();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
+        Method method = new Method();
+        method.addAnnotation("@Override");
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(FullyQualifiedJavaType.getIntInstance());
+        method.setName(BaseServiceMethod.batchInsert);
+
+        FullyQualifiedJavaType parameterType = new FullyQualifiedJavaType(domainObjectName);
+        importedTypes.add(parameterType);
+        String pName = "entitys";
+        FullyQualifiedJavaType listInstance = FullyQualifiedJavaType.getNewListInstance();
+        listInstance.addTypeArgument( new FullyQualifiedJavaType(introspectedTable.getBaseRecordType()));
+        method.addParameter(new Parameter(listInstance, pName));
+
+        List<ParameterTypeName> parameterList = new ArrayList<>();
+        parameterList.add(new ParameterTypeName("",pName,""));
+        MethodUtil.addJavaDocLine(method, parameterList);
+
+        // addBodyline,必须配置bodyline,方法才有实现体,否则这个方法就是个abstract方法了
+        List<Parameter> parameters = method.getParameters();
+        StringBuilder sb = new StringBuilder();
+        for (Parameter parameter : parameters) {
+            sb.append(parameter.getName());
+            sb.append(",");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());
+
+        // 增加方法体
+        List<String> bodyLines = new ArrayList<>();
+        bodyLines.add("if (entitys == null || entitys.size() == 0) {");
+        bodyLines.add("return 0");
+        bodyLines.add("}");
+        bodyLines.add("int c = " + toLowerCaseFirstOne(domainObjectName) + "Mapper.batchInsert(" + sb.toString() + ")");
+        bodyLines.add("return c");
+        MethodUtil.addBodyLines(method, bodyLines);
+
+        if (context.getPlugins().clientDeleteByPrimaryKeyMethodGenerated(
+                method, topLevelClass, introspectedTable)) {
+            topLevelClass.addImportedTypes(importedTypes);
+            topLevelClass.addMethod(method);
+        }
+    }
+
+    /**
      * serviceImpl list 方法
      *
      * @param topLevelClass
@@ -1755,6 +1838,7 @@ public class ControllerServicePlugin extends PluginAdapter {
         public static String delete = "delete";
         public static String list = "list";
         public static String listOfPaging = "listOfPaging";
+        public static String batchInsert = "batchInsert";
     }
 
     /**
