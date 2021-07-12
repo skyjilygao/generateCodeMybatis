@@ -196,7 +196,7 @@
           
         <!-- jdbc连接 -->  
         <jdbcConnection driverClass="${jdbc_driver}"  
-            connectionURL="${jdbc_url}" userId="${jdbc_user}"  
+            connectionURL="${jdbc_url}" userId="${jdbc_user}"
             password="${jdbc_password}" />  
           
         <!-- 类型转换 -->  
@@ -248,6 +248,7 @@
             <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
             <!-- 在insert中生成useGeneratedKeys="true" keyProperty="id" -->
             <generatedKey column="id" sqlStatement="JDBC"/>
+<!--            <columnOverride jdbcType="tinyint" javaType="java.lang.Integer" column="status"/>-->
         </table>
 
     </context>

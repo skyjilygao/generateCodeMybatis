@@ -837,7 +837,7 @@ public class ControllerServicePlugin extends PluginAdapter {
         Set<FullyQualifiedJavaType> importedTypes = new TreeSet<FullyQualifiedJavaType>();
         Method method = new Method();
 
-        method.setReturnType(FullyQualifiedJavaType.getBooleanPrimitiveInstance());
+        method.setReturnType(FullyQualifiedJavaType.getIntInstance());
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setName(BaseServiceMethod.batchInsert);
 
