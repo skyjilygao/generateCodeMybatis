@@ -8,7 +8,7 @@
     <artifactId>generateCodeMybatis</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <postgresql.version>9.4.1209</postgresql.version>
+        <postgresql.version>42.2.25</postgresql.version>
     </properties>
 
     <dependencies>
