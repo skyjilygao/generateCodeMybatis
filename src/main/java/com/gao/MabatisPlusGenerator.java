@@ -35,8 +35,11 @@ public class MabatisPlusGenerator {
         authorName = "skyjilygao";
 
         // 4. 添加表名
-        tables.add("ali_fb_excel_campagin_dwd");
+//        tables.add("ali_fb_excel_campagin_dwd");
+        tables.add("ali_lahuo_fb_account_dwd");
         tables.add("ali_lahuo_fb_adset_dwd");
+        tables.add("ali_lahuo_fb_campaign_dwd");
+        tables.add("ali_laxin_fb_account_dwd");
         tables.add("ali_laxin_fb_campaign_dwd");
         tables.add("ali_laxinios_fb_campaign_dwd");
         tables.add("ali_store_fb_campaign_dwd");
@@ -44,19 +47,25 @@ public class MabatisPlusGenerator {
         tables.add("ali_xinghe_fb_campaign_dwd");
         tables.add("ali_xinghe_gg_account_dwd");
         tables.add("ali_xinghe_gg_campaign_dwd");
-        tables.add("fb_account_dwd");
-        tables.add("fb_adset_dwd");
-        tables.add("fb_campaign_dwd");
+        tables.add("google_account_dwd");
         tables.add("google_account_dws");
+        tables.add("google_adset_dwd");
+        tables.add("google_adset_dws");
+        tables.add("google_campaign_dwd");
         tables.add("google_campaign_dws");
+        tables.add("lazada_fb_adset_dwd");
+        tables.add("meta_account_dwd");
         tables.add("meta_account_dws");
+        tables.add("meta_adset_dwd");
         tables.add("meta_adset_dws");
+        tables.add("meta_campaign_dwd");
         tables.add("meta_campaign_dws");
 
 
         // 5. 配置数据库
         DbDto dbDto;
-        dbDto = new DbDto(DbType.MYSQL, "192.168.88.31 ", 31000, "pw_big_data_fat", "root", "");
+
+        dbDto = new DbDto(DbType.MYSQL, "192.168.88.31 ", 31000, "pw_center_data_fat", "root", "");
 //        dbDto = new DbDto(DbType.MYSQL, "8.214.46.129", 3306, "powerwinmeta", "powerwinmeta", "powerwinmeta123");
 //        dbDto = new DbDto(DbType.MYSQL, "47.88.255.121", 3306, "ae_month_data", "user-ae-mon", "kjd2020ha*nchsl");
 //        dbDto = new DbDto(DbType.MYSQL, "47.88.255.121", 3306, "crm_master", "usercrmcrm", "master2020#!BV9mn");
@@ -103,7 +112,6 @@ public class MabatisPlusGenerator {
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setOutputDir(baseProjectPath + "/src/main/java").setFileOverride(true).setActiveRecord(true).setEnableCache(false).setBaseResultMap(true).setBaseColumnList(true).setOpen(false).setAuthor(authorName).setMapperName("%sMapper").setXmlName("%sMapper").setServiceName("%sService").setServiceImplName("%sServiceImpl").setControllerName("%sController");
 
-
         // 全局配置
         gen.setGlobalConfig(globalConfig);
 
@@ -143,7 +151,7 @@ public class MabatisPlusGenerator {
                 // 实体类字段加@TableField注解，针对new_buyer_30d_num生成newBuyer30dNum后在查询反向解析成new_buyer30d_num导致找不到字段
                         .setEntityTableFieldAnnotationEnable(true)
                 // Boolean类型字段是否移除is前缀处理
-                // .setEntityBooleanColumnRemoveIsPrefix(true)
+//                 .setEntityBooleanColumnRemoveIsPrefix(true)
                 // .setRestControllerStyle(true)
                 // .setControllerMappingHyphenStyle(true)
         );
