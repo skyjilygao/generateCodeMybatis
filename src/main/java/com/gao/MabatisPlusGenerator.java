@@ -1,23 +1,35 @@
 package com.gao;
 
 import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.FastAutoGenerator;
+import com.baomidou.mybatisplus.generator.config.ITypeConvert;
+import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
+import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.sun.scenario.effect.impl.prism.PrImage;
+import com.baomidou.mybatisplus.generator.fill.Column;
+import com.baomidou.mybatisplus.generator.fill.Property;
+import com.baomidou.mybatisplus.generator.query.SQLQuery;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
-import java.util.*;
+import java.sql.Types;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * 这是利用mybatis-plus生成方式。
+ * <br> 3.5.1 及其以上版本生成文档：https://baomidou.com/pages/779a6e
  * @author skyjilygao
- * @date 20210316
+ * @date 20230914
  */
 @Slf4j
 public class MabatisPlusGenerator {
@@ -30,54 +42,91 @@ public class MabatisPlusGenerator {
         // 1. 是否要删除之前生成的文件
         clearOld = true;
         // 2. 配置包名
-        basePackage = "com.powerwin.meta.data.center";
+        basePackage = "cn.skyjilygao.center";
         // 3. 类的java doc 作者
         authorName = "skyjilygao";
 
         // 4. 添加表名
-//        tables.add("ali_fb_excel_campagin_dwd");
-        tables.add("ali_lahuo_fb_account_dwd");
-        tables.add("ali_lahuo_fb_adset_dwd");
-        tables.add("ali_lahuo_fb_campaign_dwd");
-        tables.add("ali_laxin_fb_account_dwd");
-        tables.add("ali_laxin_fb_campaign_dwd");
-        tables.add("ali_laxinios_fb_campaign_dwd");
-        tables.add("ali_store_fb_campaign_dwd");
-        tables.add("ali_xinghe_fb_account_dwd");
-        tables.add("ali_xinghe_fb_campaign_dwd");
-        tables.add("ali_xinghe_gg_account_dwd");
-        tables.add("ali_xinghe_gg_campaign_dwd");
-        tables.add("google_account_dwd");
-        tables.add("google_account_dws");
-        tables.add("google_adset_dwd");
-        tables.add("google_adset_dws");
-        tables.add("google_campaign_dwd");
-        tables.add("google_campaign_dws");
-        tables.add("lazada_fb_adset_dwd");
-        tables.add("meta_account_dwd");
-        tables.add("meta_account_dws");
-        tables.add("meta_adset_dwd");
-        tables.add("meta_adset_dws");
-        tables.add("meta_campaign_dwd");
-        tables.add("meta_campaign_dws");
+
+//        tables.add("mt_user_token");
 
 
         // 5. 配置数据库
         DbDto dbDto;
 
-        dbDto = new DbDto(DbType.MYSQL, "192.168.88.31 ", 31000, "pw_center_data_fat", "root", "");
-//        dbDto = new DbDto(DbType.MYSQL, "8.214.46.129", 3306, "powerwinmeta", "powerwinmeta", "powerwinmeta123");
-//        dbDto = new DbDto(DbType.MYSQL, "47.88.255.121", 3306, "ae_month_data", "user-ae-mon", "kjd2020ha*nchsl");
-//        dbDto = new DbDto(DbType.MYSQL, "47.88.255.121", 3306, "crm_master", "usercrmcrm", "master2020#!BV9mn");
-//        dbDto = new DbDto(DbType.MYSQL, "47.88.157.22", 3306, "crm_master", "user-crm", "cjshOMNIJkcoj");
-//        dbDto = new DbDto(DbType.MYSQL, "47.241.48.232", 3306, "pw_data_fb", "pw_data_fb", "pw_data_fb1qaz2ws#");
-//        dbDto = new DbDto(DbType.MYSQL, "192.168.88.89", 3306, "dws_powerwin_fb_data_7after", "user-admin", "ceshi");
-//        dbDto = new DbDto(DbType.MYSQL, "192.168.88.150", 3306, "adorado_platform", "adorado_platform", "adorado_platform1qaz2wsx");
-//        dbDto = new DbDto(DbType.MYSQL, "192.168.88.155", 3306, "sww_auto_db", "sww_auto_db", "sww_auto_db123%");
-//        dbDto = new DbDto("192.168.88.155", 3306, "big_cms", "user_big_cms", "user_big_cms123#");
+        dbDto = new DbDto(DbType.MYSQL, "db ip", 3306, "db name", "user", "password");
 
         // 6. 执行
-        execute(dbDto);
+//        execute(dbDto);
+        if(clearOld){
+            delFolder(baseProjectPath);
+        }
+        FastAutoGenerator fastAutoGenerator = FastAutoGenerator.create(dbDto.getUrl(), dbDto.getUsername(), dbDto.getPassword());
+        if(DbType.OTHER_MYSQL.equals(dbDto.getDbType())){
+            fastAutoGenerator.dataSourceConfig(builder -> builder.databaseQueryClass(SQLQuery.class).typeConvert(new MySqlTypeConvert()).dbQuery(new MySqlQuery()));
+        }else{
+            fastAutoGenerator.dataSourceConfig(builder -> builder.typeConvertHandler((globalConfig, typeRegistry, metaInfo) -> {
+                    int typeCode = metaInfo.getJdbcType().TYPE_CODE;
+                    if (typeCode == Types.SMALLINT) {
+                        // 自定义类型转换
+                        return DbColumnType.INTEGER;
+                    }
+                    return typeRegistry.getColumnType(metaInfo);
+                }));
+        }
+        fastAutoGenerator.globalConfig(builder -> {
+                    builder.author(authorName) // 设置作者
+//                            .enableSwagger() // 开启 swagger 模式
+                            .disableOpenDir()
+                            .outputDir(baseProjectPath+"\\src\\main\\java"); // 指定输出目录
+                })
+                .packageConfig(builder -> {
+                    builder.mapper("dao")
+                            .xml("mapper.xml")
+                            .parent(basePackage) // 设置父包名
+//                            .moduleName("system") // 设置父包模块名
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, baseProjectPath+"\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
+                })
+                .strategyConfig(builder -> {
+                    builder.addInclude(new ArrayList<>(tables)) // 设置需要生成的表名
+//                            .addTablePrefix("t_", "c_") // 设置过滤表前缀
+                    ;
+                    builder.controllerBuilder()
+                            .superClass("cn.skyjilygao.center.commons.common.BaseControllerAbstract")
+                            .enableRestStyle();
+                    builder.entityBuilder()
+//                            .superClass(BaseEntity.class)
+//                            .disableSerialVersionUID()
+                            .enableFileOverride()
+                            .enableChainModel()
+                            .enableLombok()
+                            .enableRemoveIsPrefix()
+                            .enableTableFieldAnnotation()
+                            .enableActiveRecord()
+//                            .versionColumnName("version")
+                            //.versionPropertyName("version")
+//                            .logicDeleteColumnName("deleted")
+                            //.logicDeletePropertyName("deleteFlag")
+//                            .naming(NamingStrategy.no_change)
+                            .columnNaming(NamingStrategy.underline_to_camel)
+//                            .addSuperEntityColumns("id", "created_by", "created_time", "updated_by", "updated_time")
+//                            .addIgnoreColumns("age")
+//                            .addTableFills(new Column("create_time", FieldFill.INSERT))
+//                            .addTableFills(new Property("updateTime", FieldFill.INSERT_UPDATE))
+//                            .idType(IdType.AUTO)
+//                            .formatFileName("%sEntity")
+                            .build();
+                    builder.mapperBuilder()
+                            .enableFileOverride()
+                            .enableBaseResultMap()
+                            .enableBaseColumnList();
+                    builder.serviceBuilder()
+                            .enableFileOverride()
+                            .formatServiceFileName("%sService")
+                            .formatServiceImplFileName("%sServiceImp");
+                })
+                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .execute();
     }
 
     /**
@@ -103,95 +152,95 @@ public class MabatisPlusGenerator {
      * @return
      */
     private static AutoGenerator buidGenerator(DbDto dbDto){
-        DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setDbType(dbDto.dbType).setTypeConvert(dbDto.typeConvert).setDriverName(driverName).setUrl(url).setUsername(username).setPassword(password);
-
-        AutoGenerator gen = new AutoGenerator();
-        gen.setDataSource(dataSourceConfig);
-
-        GlobalConfig globalConfig = new GlobalConfig();
-        globalConfig.setOutputDir(baseProjectPath + "/src/main/java").setFileOverride(true).setActiveRecord(true).setEnableCache(false).setBaseResultMap(true).setBaseColumnList(true).setOpen(false).setAuthor(authorName).setMapperName("%sMapper").setXmlName("%sMapper").setServiceName("%sService").setServiceImplName("%sServiceImpl").setControllerName("%sController");
-
-        // 全局配置
-        gen.setGlobalConfig(globalConfig);
-
-        String[] tbls = tables.toArray(new String[tables.size()]);
-        /**
-         * 策略配置
-         */
-        gen.setStrategy(new StrategyConfig()
-                        // .setCapitalMode(true)// 全局大写命名
-                        //.setDbColumnUnderline(true)//全局下划线命名
-                        .setTablePrefix(new String[]{prefix})// 此处可以修改为您的表前缀
-                        .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
-                        .setInclude(tbls) // 需要生成的表
-                        .setRestControllerStyle(true)
-                        //.setExclude(new String[]{"test"}) // 排除生成的表
-                        // 自定义实体父类
-                        // .setSuperEntityClass("com.baomidou.demo.TestEntity")
-                        // 自定义实体，公共字段
-                        //.setSuperEntityColumns(new String[]{"test_id"})
-                        //.setTableFillList(tableFillList)
-                        // 自定义 mapper 父类 默认BaseMapper
-                        //.setSuperMapperClass("com.baomidou.mybatisplus.mapper.BaseMapper")
-                        // 自定义 service 父类 默认IService
-                        // .setSuperServiceClass("com.baomidou.demo.TestService")
-                        // 自定义 service 实现类父类 默认ServiceImpl
-                        // .setSuperServiceImplClass("com.baomidou.demo.TestServiceImpl")
-                        // 自定义 controller 父类
-                        //.setSuperControllerClass("com.kichun."+packageName+".controller.AbstractController")
-                        // 【实体】是否生成字段常量（默认 false）
-                        // public static final String ID = "test_id";
-                        // .setEntityColumnConstant(true)
-                        // 【实体】是否为构建者模型（默认 false）
-                        // public User setName(String name) {this.name = name; return this;}
-                        // .setEntityBuilderModel(true)
-                        // 【实体】是否为lombok模型（默认 false）<a href="https://projectlombok.org/">document</a>
-                        .setEntityLombokModel(true)
-                // 实体类字段加@TableField注解，针对new_buyer_30d_num生成newBuyer30dNum后在查询反向解析成new_buyer30d_num导致找不到字段
-                        .setEntityTableFieldAnnotationEnable(true)
-                // Boolean类型字段是否移除is前缀处理
-//                 .setEntityBooleanColumnRemoveIsPrefix(true)
-                // .setRestControllerStyle(true)
-                // .setControllerMappingHyphenStyle(true)
-        );
-
-        /**
-         * 包配置
-         */
-        gen.setPackageInfo(new PackageConfig()
-                //.setModuleName("User")
-                .setParent(basePackage)// 自定义包路径
-                .setController("controller")// 这里是控制器包名，默认 web
-                .setEntity("entity").setMapper("dao").setService("service").setServiceImpl("service.impl").setXml("mapper"));
-
-        /**
-         * 注入自定义配置
-         */
-        // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
-        InjectionConfig abc = new InjectionConfig() {
-            @Override
-            public void initMap() {
-                Map<String, Object> map = new HashMap<>();
-                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
-                this.setMap(map);
-            }
-        };
-        //自定义文件输出位置（非必须）
-        /*List<FileOutConfig> fileOutList = new ArrayList<>();
-        fileOutList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return baseProjectPath + "/src/main/resources/mappers/" + tableInfo.getEntityName() + ".xml";
-            }
-        });
-        abc.setFileOutConfigList(fileOutList);
-        gen.setCfg(abc);*/
-
-        /**
-         * 指定模板引擎 默认是VelocityTemplateEngine ，需要引入相关引擎依赖
-         */
-        gen.setTemplateEngine(new FreemarkerTemplateEngine());
+//        DataSourceConfig dataSourceConfig = new DataSourceConfig();
+//        dataSourceConfig.setDbType(dbDto.dbType).setTypeConvert(dbDto.typeConvert).setDriverName(driverName).setUrl(url).setUsername(username).setPassword(password);
+//
+//        AutoGenerator gen = new AutoGenerator();
+//        gen.setDataSource(dataSourceConfig);
+//
+//        GlobalConfig globalConfig = new GlobalConfig();
+//        globalConfig.setOutputDir(baseProjectPath + "/src/main/java").setFileOverride(true).setActiveRecord(true).setEnableCache(false).setBaseResultMap(true).setBaseColumnList(true).setOpen(false).setAuthor(authorName).setMapperName("%sMapper").setXmlName("%sMapper").setServiceName("%sService").setServiceImplName("%sServiceImpl").setControllerName("%sController");
+//
+//        // 全局配置
+//        gen.setGlobalConfig(globalConfig);
+//
+//        String[] tbls = tables.toArray(new String[tables.size()]);
+//        /**
+//         * 策略配置
+//         */
+//        gen.setStrategy(new StrategyConfig()
+//                        // .setCapitalMode(true)// 全局大写命名
+//                        //.setDbColumnUnderline(true)//全局下划线命名
+//                        .setTablePrefix(new String[]{prefix})// 此处可以修改为您的表前缀
+//                        .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
+//                        .setInclude(tbls) // 需要生成的表
+//                        .setRestControllerStyle(true)
+//                        //.setExclude(new String[]{"test"}) // 排除生成的表
+//                        // 自定义实体父类
+//                        // .setSuperEntityClass("com.baomidou.demo.TestEntity")
+//                        // 自定义实体，公共字段
+//                        //.setSuperEntityColumns(new String[]{"test_id"})
+//                        //.setTableFillList(tableFillList)
+//                        // 自定义 mapper 父类 默认BaseMapper
+//                        //.setSuperMapperClass("com.baomidou.mybatisplus.mapper.BaseMapper")
+//                        // 自定义 service 父类 默认IService
+//                        // .setSuperServiceClass("com.baomidou.demo.TestService")
+//                        // 自定义 service 实现类父类 默认ServiceImpl
+//                        // .setSuperServiceImplClass("com.baomidou.demo.TestServiceImpl")
+//                        // 自定义 controller 父类
+//                        //.setSuperControllerClass("com.kichun."+packageName+".controller.AbstractController")
+//                        // 【实体】是否生成字段常量（默认 false）
+//                        // public static final String ID = "test_id";
+//                        // .setEntityColumnConstant(true)
+//                        // 【实体】是否为构建者模型（默认 false）
+//                        // public User setName(String name) {this.name = name; return this;}
+//                        // .setEntityBuilderModel(true)
+//                        // 【实体】是否为lombok模型（默认 false）<a href="https://projectlombok.org/">document</a>
+//                        .setEntityLombokModel(true)
+//                // 实体类字段加@TableField注解，针对new_buyer_30d_num生成newBuyer30dNum后在查询反向解析成new_buyer30d_num导致找不到字段
+//                        .setEntityTableFieldAnnotationEnable(true)
+//                // Boolean类型字段是否移除is前缀处理
+////                 .setEntityBooleanColumnRemoveIsPrefix(true)
+//                // .setRestControllerStyle(true)
+//                // .setControllerMappingHyphenStyle(true)
+//        );
+//
+//        /**
+//         * 包配置
+//         */
+//        gen.setPackageInfo(new PackageConfig()
+//                //.setModuleName("User")
+//                .setParent(basePackage)// 自定义包路径
+//                .setController("controller")// 这里是控制器包名，默认 web
+//                .setEntity("entity").setMapper("dao").setService("service").setServiceImpl("service.impl").setXml("mapper"));
+//
+//        /**
+//         * 注入自定义配置
+//         */
+//        // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
+//        InjectionConfig abc = new InjectionConfig() {
+//            @Override
+//            public void initMap() {
+//                Map<String, Object> map = new HashMap<>();
+//                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
+//                this.setMap(map);
+//            }
+//        };
+//        //自定义文件输出位置（非必须）
+//        /*List<FileOutConfig> fileOutList = new ArrayList<>();
+//        fileOutList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
+//            @Override
+//            public String outputFile(TableInfo tableInfo) {
+//                return baseProjectPath + "/src/main/resources/mappers/" + tableInfo.getEntityName() + ".xml";
+//            }
+//        });
+//        abc.setFileOutConfigList(fileOutList);
+//        gen.setCfg(abc);*/
+//
+//        /**
+//         * 指定模板引擎 默认是VelocityTemplateEngine ，需要引入相关引擎依赖
+//         */
+//        gen.setTemplateEngine(new FreemarkerTemplateEngine());
 
         /**
          * 模板配置
@@ -209,7 +258,7 @@ public class MabatisPlusGenerator {
         // .setServiceImpl("...");
 //        );
 
-        return gen;
+        return null;
     }
     //删除文件夹
     public static void delFolder(String folderPath) {
@@ -279,6 +328,7 @@ public class MabatisPlusGenerator {
         }
         private void init(){
             switch (dbType){
+                case OTHER_MYSQL:
                 case MYSQL:
                     driverName ="com.mysql.cj.jdbc.Driver";
                     typeConvert = MySqlTypeConvert.INSTANCE;
@@ -297,7 +347,7 @@ public class MabatisPlusGenerator {
 
 
     //生成文件所在项目路径
-    private static String baseProjectPath = "tmpCode2";
+    private static String baseProjectPath = "tmpCode3";
 
     //基本包名
     private static String basePackage;
@@ -317,4 +367,9 @@ public class MabatisPlusGenerator {
     private static String password;
 
     private static boolean clearOld = false;
+
+     enum DbType{
+        MYSQL,
+        OTHER_MYSQL;
+    }
 }
